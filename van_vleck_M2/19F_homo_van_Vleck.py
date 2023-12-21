@@ -49,6 +49,34 @@ def convert_csv_to_txt(csv_file, txt_file):
             txt_output.write(line)
 
 
+# SECTION 2: extract pair distances and save to r_jk array
+def read_distances(distance_txt_file):
+    """
+    Read pair distances from text file
+
+    :param distance_txt_file: the processed text file containing distances d 1,2 [A]
+    """
+    # Initialize empty distance array
+    r_jk = []
+    
+    with open(distance_txt_file, 'r') as distances:
+        # skip the header
+        next(distances)
+
+        # Iterate through the lines in the distance file
+        for line in distances:
+            # split line into columns
+            columns = line.split()
+
+            # Extract distance from the 'd 1,2' column
+            distance_str = columns[-1].replace(',', '.')
+            distance = float(distance_str)
+
+            r_jk.append(distance)
+
+    return r_jk
+
+
 # Compute M2: M2 = 3/5 gamma^4 h_bar^2 I(I+1) SUM_k 1/r_jk^6
 def compute_M2(gamma,h_bar,I,r_jk):
     """
@@ -68,31 +96,29 @@ def compute_M2(gamma,h_bar,I,r_jk):
         return M2
     
     except ZeroDivisionError:
-        raise ValueError("Division by zero detected! Please adjust input data")
+        raise ValueError("Division by zero detected! Please adjust input data in the pair distance vector r_jk")
 
 
 def main():
-    # define constants
-
-
     # STEP 1
     # input file
     input_csv = input("Enter the path to the input CSV file: ")
     
     # Use the same name as the input CSV file for the output text file
-    base_name = os.path.splitext(os.path.basename(input_csv))[0]
-    output_text = os.path.join(os.getcwd(), f'{base_name}.txt')
+    input_name = os.path.splitext(os.path.basename(input_csv))[0]
+    output_text = os.path.join(os.getcwd(), f'{input_name}.txt')
     
+    # Run csv to text file conversion
     convert_csv_to_txt(input_csv, output_text)
-
     print(f"Conversion complete. CSV file '{input_csv}' converted to text file '{output_text}'.")
+
 
 
     # Van Vleck second moment calculations
     gamma_19F = 251.815  # rad s^-1 T^-1
     h_bar = 1.05457266 * 10e-34
     I_19F = 1/2  # spin of resonant nuclei
-    r_jk_homo = [1, 2, 3, 4, 1, 2, 3, 4] # to change with the actual values
+    r_jk_homo = [1, 2, 3, 4, 0, 2, 3, 4] # to change with the actual values
     try: 
         second_moment = compute_M2(gamma_19F, h_bar, I_19F, r_jk_homo)
         print(f"The computed van Vleck Homonuclear 19F-19F second moment is: {second_moment}")
