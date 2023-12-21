@@ -1,0 +1,29 @@
+# Van Vleck Second Moment Analysis
+# TLa optical pure (S) and racemic
+# Homonuclear intramolecular 19F distances from Avogadro (in Angstroem)
+# Structure: ja065603a_si_001
+# Order of the nuclei should be respected for comparison
+
+$optical_pure
+F1-F10: 3.488
+F1-F18: 3.923
+F1-F19: 3.424
+F5-F10: 3.928
+F5-F18: 3.110
+F5-F19: 3.448
+F8-F10: 3.110
+F8-F18: 3.202
+F8-F19: 3.923
+
+$racemic
+F7-F15: 3.005
+F7-F20: 3.602
+F7-F8: 3.587
+F5-F15: 3.682
+F5-F20: 3.587
+F5-F8: 4.690
+F1-F15: 3.792
+F1-F20: 3.005
+F1-F8: 3.682
+
+
