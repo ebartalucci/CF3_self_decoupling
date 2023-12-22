@@ -31,9 +31,6 @@ import pandas as pd
 import seaborn as sns
 import math
 
-
-# Set constants
-
 # STEP 1: Convert CSV to TXT file
 def convert_csv_to_txt(csv_file, txt_file):
     """
@@ -49,7 +46,7 @@ def convert_csv_to_txt(csv_file, txt_file):
             txt_output.write(line)
 
 
-# SECTION 2: extract pair distances and save to r_jk array
+# STEP 2: extract pair distances and save to r_jk array
 def read_distances(distance_txt_file):
     """
     Read pair distances from text file
@@ -77,7 +74,7 @@ def read_distances(distance_txt_file):
     return r_jk
 
 
-# Compute M2: M2 = 3/5 gamma^4 h_bar^2 I(I+1) SUM_k 1/r_jk^6
+# STEP 3: Compute M2 as M2 = 3/5 gamma^4 h_bar^2 I(I+1) SUM_k 1/r_jk^6
 def compute_M2(gamma,h_bar,I,r_jk):
     """
     Compute van Vleck second moment based on the given parameters and the homonuclear 19F-19F pair distances.
@@ -112,15 +109,17 @@ def main():
     convert_csv_to_txt(input_csv, output_text)
     print(f"Conversion complete. CSV file '{input_csv}' converted to text file '{output_text}'.")
 
+    # STEP 2
+    # Distance extraction from file
+    r_jk = read_distances(output_text) # pairwise distances vector to insert in M2 calculation
 
-
+    # STEP 3
     # Van Vleck second moment calculations
-    gamma_19F = 251.815  # rad s^-1 T^-1
-    h_bar = 1.05457266 * 10e-34
+    gamma_19F = 251.815 * 10e6  # rad s^-1 T^-1
+    h_bar = 1.05457266 * 10e-34 # J * s
     I_19F = 1/2  # spin of resonant nuclei
-    r_jk_homo = [1, 2, 3, 4, 0, 2, 3, 4] # to change with the actual values
     try: 
-        second_moment = compute_M2(gamma_19F, h_bar, I_19F, r_jk_homo)
+        second_moment = compute_M2(gamma_19F, h_bar, I_19F, r_jk)
         print(f"The computed van Vleck Homonuclear 19F-19F second moment is: {second_moment}")
         
     except ValueError as error:
