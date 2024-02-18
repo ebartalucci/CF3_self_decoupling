@@ -122,6 +122,17 @@ def compute_homo_M2(mu_0,gamma,h_bar,I,r_jk):
         raise ValueError("Division by zero detected! Please adjust input data in the pair distance vector r_jk")
 
 
+# STEP 4: WRITE VAN VLECK VALUES TO FILE
+def write_van_vleck(second_moment, txt_file):
+    """
+    Write Van Vleck M2 to file so that it can be given to the appendix of the paper
+    :param txt_file: file where to write it
+    :param second_moment: value of M2
+    """
+    with open(txt_file, 'w') as f:
+        f.write(f'Van Vleck Second Moment M2 is: {str(second_moment)}')
+
+
 def main():
     # STEP 1
     # input file
@@ -129,7 +140,7 @@ def main():
     
     # Use the same name as the input CSV file for the output text file
     input_name = os.path.splitext(os.path.basename(input_csv))[0]
-    output_text = os.path.join(os.getcwd(), f'{input_name}.txt')
+    output_text = os.path.join(os.getcwd(), f'van_vleck_M2/{input_name}.txt')
     
     # Run csv to text file conversion
     convert_csv_to_txt(input_csv, output_text)
@@ -153,6 +164,9 @@ def main():
         
     except ValueError as error:
         print(f"Error: {error}")
+
+    store_M2 = os.path.join(os.getcwd(), 'van_vleck_M2/M2_values.txt')
+    write_van_vleck(second_moment, store_M2)
 
 if __name__ == "__main__":
     main()
