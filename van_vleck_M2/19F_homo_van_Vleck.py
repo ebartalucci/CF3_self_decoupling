@@ -35,9 +35,9 @@
 # Import modules
 import os
 import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
+#import matplotlib.pyplot as plt
+#import pandas as pd
+#import seaborn as sns
 import math
 
 # STEP 1: Convert CSV to TXT file
@@ -88,10 +88,10 @@ def read_distances(distance_txt_file):
                 distance = float(distance_str)
 
                 # Convert angstroem to meters
-                distance_in_meters = distance * 10e-10
+                distance_in_meters = distance * 1e-10
 
                 r_jk.append(distance_in_meters)
-            
+                 
             # Check if everything is alright: compare with the text file
             #print(columns)
 
@@ -150,13 +150,17 @@ def main():
     # Distance extraction from file
     r_jk = read_distances(output_text) # pairwise distances vector to insert in M2 calculation
     print('Pairwise distances stored in rjk vector.')
+
+    # test
+    test = sum(1 / (r_jk**6) for r_jk in r_jk)
+    print(test)
     
     # STEP 3
     # Van Vleck second moment calculations
-    gamma_19F = 251.815 * 10e6  # [rad s^-1 T^-1]
-    h_bar = 1.05457266 * 10e-34 # [J * s]
+    gamma_19F = 251.815e6  # [rad s^-1 T^-1]
+    h_bar = 1.05457266e-34 # [J * s]
     I_19F = 1/2  # spin of resonant nuclei
-    mu_0 = 1.256637 * 10e-6 # permeability of the vacuum [N A^-2]
+    mu_0 = 1.256637e-6 # permeability of the vacuum [N A^-2]
     
     try: 
         second_moment = compute_homo_M2(mu_0, gamma_19F, h_bar, I_19F, r_jk)
