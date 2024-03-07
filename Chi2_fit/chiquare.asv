@@ -1,0 +1,18 @@
+% Chi^2 Fit for the CF3 lineshape project
+% Author: Ettore Bartalucci
+% Aachen, 07.03.24
+
+%% Open spectrum using RBNMR function and plot to see if everything alright
+NMR_data = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
+
+%% Select region in the CF3 region of the spectrum (115ppm-135ppm)
+w = NMR_data.XAxis;
+spectrum = NMR_data.Data;
+
+figure(1); clf;
+plot(w, spectrum)
+
+
+
+
+
