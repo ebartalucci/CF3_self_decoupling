@@ -1,7 +1,9 @@
-% Chi^2 Fit for the CF3 lineshape project
-% Author: Ettore Bartalucci
-% Aachen, 07.03.24
-% Function for Chi square fitting
+% Chisquare fit function
+% Author: Ettore Bartalucci, RWTH Aachen
+% Support and debug with Chatgpt
+% First draft: Aachen, 07.03.24
+% Last update: Aachen, 04.04.24
+% Project: CF3 self decoupling
 
 function [fitParams, chiSquare] = chiSquareFit2D(xData, yData, zData, initialGuess)
     % xData, yData: arrays containing the x and y coordinates of the data points

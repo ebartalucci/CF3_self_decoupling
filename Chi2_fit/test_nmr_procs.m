@@ -1,6 +1,9 @@
-% Chi^2 Fit for the CF3 lineshape project
-% Author: Ettore Bartalucci
-% Aachen, 07.03.24
+% Test work with NMR data in matlab
+% Author: Ettore Bartalucci, RWTH Aachen
+% Support and debug with Chatgpt
+% First draft: Aachen, 07.03.24
+% Last update: Aachen, 04.04.24
+% Project: CF3 self decoupling
 
 %% Open spectrum using RBNMR function and plot to see if everything alright
 NMR_data = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
@@ -35,7 +38,7 @@ set(gca, 'XDir', 'reverse');
 title('CF3 region in ppm')
 xlabel('13C / ppm')
 
-%% 
-% Initial guess for parameters
+
+save('exp_cf3_data_TLA_S_14khz_exp_200_161023.xlsx', 'w_cf3', "spectrum_cf3")
 
 
