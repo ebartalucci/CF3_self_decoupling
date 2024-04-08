@@ -10,24 +10,30 @@ tic;
 
 %% Experimental section
 % Optical pure TLA @ 14kHz, 30kHz, and 60kHz
-tla_s_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
-tla_s_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
-tla_s_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_60khz_exp_15_121023\pdata\1');
-% Racemic TLA @ 14kHz, 30kHz, and 60kHz
-tla_rac_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_14khz_exp_10_221123\pdata\1');
-tla_rac_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_30khz_exp_10_211123\pdata\1');
-tla_rac_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
+tla_s_14khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
+tla_s_30khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
+tla_s_60khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_60khz_exp_15_121023\pdata\1');
+% Racemic @ 14kHz, 30kHz, and 60kHz
+tla_rac_14khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_14khz_exp_10_221123\pdata\1');
+tla_rac_30khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_30khz_exp_10_211123\pdata\1');
+tla_rac_60khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
 
 % Select CF3 region of the spectrum (115ppm-135ppm), centered on max signal
-cf3_region_indices = 3294:3794; % 500 points here and 500 points in the simulated ones
-
 % Extract CF3 spectra for each TLA spectrum
-spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(cf3_region_indices);
-spectrum_cf3_tla_s_30khz = tla_s_30khz.Data(cf3_region_indices);
-spectrum_cf3_tla_s_60khz = tla_s_60khz.Data(cf3_region_indices);
-spectrum_cf3_tla_rac_14khz = tla_rac_14khz.Data(cf3_region_indices);
-spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data(cf3_region_indices);
-spectrum_cf3_tla_rac_60khz = tla_rac_60khz.Data(cf3_region_indices);
+spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(3294:3794); % here are 500 points from middle of spectrum
+spectrum_cf3_tla_s_30khz = tla_s_30khz.Data(3500:4000);
+% spectrum_cf3_tla_s_60khz = tla_s_60khz.Data(4750:7250);
+% spectrum_cf3_tla_rac_14khz = tla_rac_14khz.Data(118672:121172);
+spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data(3470:3970);
+% spectrum_cf3_tla_rac_60khz = tla_rac_60khz.Data(58285:60785);
+% 
+% figure(1212);hold on;
+% plot(spectrum_cf3_tla_s_14khz)
+% plot(spectrum_cf3_tla_s_30khz)
+% plot(spectrum_cf3_tla_rac_30khz)
+% legend();
+% hold off;
+
 
 %% Simulations section
 % Define range of k_ex and T_2
@@ -41,7 +47,7 @@ Fs = 1 / (t(2) - t(1)); % Sampling frequency (Hz)
 fileID = fopen('chisquare_mins.txt','w');
 
 % Loop over each TLA spectrum
-for spectrum_index = 1:6
+for spectrum_index = 1:3
     
     % store chi-square statistics
     chi_square_matrix = zeros(length(k_ex_values), length(T_2_values));
@@ -52,14 +58,14 @@ for spectrum_index = 1:6
             current_spectrum = spectrum_cf3_tla_s_14khz;
         case 2
             current_spectrum = spectrum_cf3_tla_s_30khz;
+        % case 3
+        %     current_spectrum = spectrum_cf3_tla_s_60khz;
+        % case 4
+        %     current_spectrum = spectrum_cf3_tla_rac_14khz;
         case 3
-            current_spectrum = spectrum_cf3_tla_s_60khz;
-        case 4
-            current_spectrum = spectrum_cf3_tla_rac_14khz;
-        case 5
             current_spectrum = spectrum_cf3_tla_rac_30khz;
-        case 6
-            current_spectrum = spectrum_cf3_tla_rac_60khz;
+        % case 6
+        %     current_spectrum = spectrum_cf3_tla_rac_60khz;
     end
 
     %%%%%%%%%%%%%%%%%%% FROM MATTHIAS ERNST, ETH ZURICH %%%%%%%%%%%%%%%%%%%
@@ -147,14 +153,6 @@ for spectrum_index = 1:6
 
             % Store chi-square statistic in the matrix
             chi_square_matrix(k, T) = real(chi_square);
-
-            figure(111);
-            plot(norm_final_spectrum)
-            hold on;
-            plot(norm_current_spectrum)
-            hold off;
-
-
         end
     end
 
@@ -191,7 +189,7 @@ for spectrum_index = 1:6
     colorbar; 
     xlabel('T2');
     ylabel('k_ex');
-    title(sprintf('Chi-square - %s', spectra_titles(spectrum_index))); % Set title using spectrum_titles array
+    title('Chi-square'); % Set title using spectrum_titles array
 end
 
 % Close the text file

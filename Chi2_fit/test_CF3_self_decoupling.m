@@ -9,17 +9,17 @@
 %%%%%%%%% TEST: load experimental data                            %%%%%%%%%
 
 % Open spectrum using RBNMR function and plot to see if everything alright
-NMR_data = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
-
-% Select region in the CF3 region of the spectrum (115ppm-135ppm)
-w = NMR_data.XAxis;
-spectrum = NMR_data.Data;
-
-w_cf3 = w(3294:3794);
-spectrum_cf3 = spectrum(3294:3794);
-spectrum_cf3 = spectrum_cf3 / max(spectrum_cf3);
-
-plot(spectrum_cf3)
+% NMR_data = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
+% 
+% % Select region in the CF3 region of the spectrum (115ppm-135ppm)
+% w = NMR_data.XAxis;
+% spectrum = NMR_data.Data;
+% 
+% w_cf3 = w(3294:3794);
+% spectrum_cf3 = spectrum(3294:3794);
+% spectrum_cf3 = spectrum_cf3 / max(spectrum_cf3);
+% 
+% plot(spectrum_cf3)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%% TEST: Simulate one spectrum for k_ex=0.001 and T_2=0.03 %%%%%%%%%
