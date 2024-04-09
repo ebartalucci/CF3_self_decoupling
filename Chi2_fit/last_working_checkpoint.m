@@ -5,7 +5,7 @@
 % First draft: Aachen, 07.03.24
 % Last update: Aachen, 09.04.24
 % Project: CF3 self decoupling
-clear all;
+
 tic;
 
 %% Experimental section
@@ -19,51 +19,53 @@ tla_rac_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_d
 tla_rac_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
 
 % Select CF3 region of the spectrum (115ppm-135ppm), centered on max signal
-% Extract CF3 spectra for each TLA spectrum. Points are centered on CF3
-spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(3294:3794); % here are 250 points from middle of spectrum
-spectrum_cf3_tla_s_30khz = tla_s_30khz.Data(3500:4000); % here are 250 points from middle of spectrum
-spectrum_cf3_tla_s_60khz = tla_s_60khz.Data(55000:65000); % here are 5000 points from middle of spectrum
-spectrum_cf3_tla_rac_14khz = tla_rac_14khz.Data(114922:124922); % here are 5000 points from middle of spectrum
-spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data(3470:3970); % here are 250 points from middle of spectrum
-spectrum_cf3_tla_rac_60khz = tla_rac_60khz.Data(54535:64535); % here are 5000 points from middle of spectrum
+% Extract CF3 spectra for each TLA spectrum
+spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(3294:3794); % here are 500 points from middle of spectrum
+spectrum_cf3_tla_s_30khz = tla_s_30khz.Data(3500:4000);
+% spectrum_cf3_tla_s_60khz = tla_s_60khz.Data(4750:7250);
+% spectrum_cf3_tla_rac_14khz = tla_rac_14khz.Data(118672:121172);
+spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data(3470:3970);
+% spectrum_cf3_tla_rac_60khz = tla_rac_60khz.Data(58285:60785);
+% 
+% figure(1212);hold on;
+% plot(spectrum_cf3_tla_s_14khz)
+% plot(spectrum_cf3_tla_s_30khz)
+% plot(spectrum_cf3_tla_rac_30khz)
+% legend();
+% hold off;
+
 
 %% Simulations section
 % Define range of k_ex and T_2
-k_ex_values = linspace(1, 1000, 50); % change this to 50 or 100
-T_2_values = linspace(0.01, 0.1, 50); % change this to 50 or 100
+k_ex_values = linspace(1, 1000, 10); % change this to 50
+T_2_values = linspace(0.01, 0.1, 10); % change this to 50
 J_cf = 280; 
-
-% Define different t values that fits the experimental sizes
-t_values = {linspace(0, 0.1, 501), linspace(0, 0.1, 501), ...
-            linspace(0, 0.1, 10001), linspace(0, 0.1, 10001), ...
-            linspace(0, 0.1, 501), linspace(0, 0.1, 10001)};
+t = linspace(0, 0.1, 501);
+Fs = 1 / (t(2) - t(1)); % Sampling frequency (Hz)
 
 % printing file
 fileID = fopen('chisquare_mins.txt','w');
 
 % Loop over each TLA spectrum
-for t_index = 1:length(t_values)
-    t = t_values{t_index};
-    dt = t(2) - t(1);
-    Fs = 1 / dt; % sampling frequency
+for spectrum_index = 1:3
     
     % store chi-square statistics
     chi_square_matrix = zeros(length(k_ex_values), length(T_2_values));
 
-    % Select the current spectrum based on the t_index, dont change order
-    switch t_index
+    % Select the current TLA spectrum
+    switch spectrum_index
         case 1
             current_spectrum = spectrum_cf3_tla_s_14khz;
         case 2
             current_spectrum = spectrum_cf3_tla_s_30khz;
+        % case 3
+        %     current_spectrum = spectrum_cf3_tla_s_60khz;
+        % case 4
+        %     current_spectrum = spectrum_cf3_tla_rac_14khz;
         case 3
-            current_spectrum = spectrum_cf3_tla_s_60khz;
-        case 4
-            current_spectrum = spectrum_cf3_tla_rac_14khz;
-        case 5
             current_spectrum = spectrum_cf3_tla_rac_30khz;
-        case 6
-            current_spectrum = spectrum_cf3_tla_rac_60khz;
+        % case 6
+        %     current_spectrum = spectrum_cf3_tla_rac_60khz;
     end
 
     %%%%%%%%%%%%%%%%%%% FROM MATTHIAS ERNST, ETH ZURICH %%%%%%%%%%%%%%%%%%%
@@ -72,7 +74,7 @@ for t_index = 1:length(t_values)
         for T = 1:length(T_2_values)
             k_ex = k_ex_values(k);
             T_2 = T_2_values(T);
-
+    
             % Modified Bloch equtions
             L1 = [(-k_ex - pi/T_2 - 1i*pi*J_cf), k_ex;
                  k_ex, (-k_ex - pi/T_2 + 1i*pi*J_cf)]; %1i is the imaginary unit
@@ -142,17 +144,12 @@ for t_index = 1:length(t_values)
             N = length(signal1); % Length of the signal
             f = linspace(-Fs/2, Fs/2, N); % Frequency axis
 
-            % Normalize and transpose experimental spectrum
+            % normalize experimental spectrum
             norm_current_spectrum = current_spectrum / max(current_spectrum);
             norm_current_spectrum = norm_current_spectrum';
 
-            % Avoid division by zero and remove imaginary parts
-            norm_current_spectrum = real(norm_current_spectrum);
-            norm_final_spectrum = real(norm_final_spectrum);
-            non_zero_indices = norm_final_spectrum ~= 0;
-
             % Compute chi-square statistic between experimental and simulated spectra
-            chi_square = sum((norm_current_spectrum(non_zero_indices) - norm_final_spectrum(non_zero_indices)).^2 ./ norm_final_spectrum(non_zero_indices));
+            chi_square = sum((norm_current_spectrum - norm_final_spectrum).^2 ./ norm_final_spectrum);
 
             % Store chi-square statistic in the matrix
             chi_square_matrix(k, T) = real(chi_square);
@@ -170,14 +167,14 @@ for t_index = 1:length(t_values)
     min_T_2 = T_2_values(min_T_2_index);
     
     % Print the results to the console
-    disp(['Minimal Chi-square for TLA Spectrum ', num2str(t_index), ':']);
+    disp(['Minimal Chi-square for TLA Spectrum ', num2str(spectrum_index), ':']);
     disp(['T2 Value: ', num2str(min_T_2)]);
     disp(['k_ex Value: ', num2str(min_k_ex)]);
     disp(['Chi-square Value: ', num2str(min_chi_square)]);
     disp(' ');
     
     % Write the results to the text file
-    fprintf(fileID, 'Minimal Chi-square for TLA Spectrum %d:\n', t_index);
+    fprintf(fileID, 'Minimal Chi-square for TLA Spectrum %d:\n', spectrum_index);
     fprintf(fileID, 'T2 Value: %f\n', min_T_2);
     fprintf(fileID, 'k_ex Value: %f\n', min_k_ex);
     fprintf(fileID, 'Chi-square Value: %f\n\n', min_chi_square);
@@ -186,7 +183,7 @@ for t_index = 1:length(t_values)
     normalized_chi_square_matrix = (chi_square_matrix - min(chi_square_matrix(:))) / (max(chi_square_matrix(:)) - min(chi_square_matrix(:)));
 
     % Plot the chi-square statistics as a heatmap with a specified colormap
-    subplot(2, 3, t_index); 
+    subplot(2, 3, spectrum_index); 
     imagesc(T_2_values, k_ex_values, normalized_chi_square_matrix);
     colormap(jet); 
     colorbar; 
