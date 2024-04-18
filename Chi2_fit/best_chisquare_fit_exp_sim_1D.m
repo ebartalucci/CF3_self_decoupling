@@ -11,13 +11,22 @@ clear all;
 
 % Load the experimental spectra
 % Optical pure TLA @ 14kHz, 30kHz, and 60kHz
-tla_s_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
-tla_s_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
-tla_s_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_60khz_exp_15_121023\pdata\1');
+tla_s_14khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
+tla_s_30khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
+tla_s_60khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_60khz_exp_15_121023\pdata\1');
 % Racemic @ 14kHz, 30kHz, and 60kHz
-tla_rac_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_14khz_exp_10_221123\pdata\1');
-tla_rac_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_30khz_exp_10_211123\pdata\1');
-tla_rac_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
+tla_rac_14khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_14khz_exp_10_221123\pdata\1');
+tla_rac_30khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_30khz_exp_10_211123\pdata\1');
+tla_rac_60khz = rbnmr('C:\Users\ettor\Desktop\Programming_for_NMR_spectroscopists\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
+
+% tla_s_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_14khz_exp_200_161023\pdata\1');
+% tla_s_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_30khz_exp_14_121023\pdata\1');
+% tla_s_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_S_60khz_exp_15_121023\pdata\1');
+% % Racemic @ 14kHz, 30kHz, and 60kHz
+% tla_rac_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_14khz_exp_10_221123\pdata\1');
+% tla_rac_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_30khz_exp_10_211123\pdata\1');
+% tla_rac_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
+
 
 % Extract CF3 spectra for each TLA spectrum
 spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(3294:3794); % here are 250 points from middle of spectrum
@@ -32,7 +41,7 @@ spectrum_cf3_tla_s_14khz = spectrum_cf3_tla_s_14khz / max(spectrum_cf3_tla_s_14k
 spectrum_cf3_tla_s_30khz = spectrum_cf3_tla_s_30khz / max(spectrum_cf3_tla_s_30khz);
 spectrum_cf3_tla_s_60khz = spectrum_cf3_tla_s_60khz / max(spectrum_cf3_tla_s_60khz);
 spectrum_cf3_tla_rac_14khz = spectrum_cf3_tla_rac_14khz / max(spectrum_cf3_tla_rac_14khz);
-spectrum_cf3_tla_rac_30khz = spectrum_cf3_tla_rac_30khz / max(spectrum_cf3_tla_rac_30khz);
+spectrum_cf3_tla_rac_30khz = spectrum_cf3_tla_rac_30khz / max(spectrum_cf3_tla_rac_30khz(3470:3970));
 spectrum_cf3_tla_rac_60khz = spectrum_cf3_tla_rac_60khz / max(spectrum_cf3_tla_rac_60khz);
 
 %% Variables section
@@ -46,9 +55,10 @@ t = linspace(0, 0.1, 8192); % time domain size (s) need to match experiment
 DW = 0.0000019; % dwell time
 SW = 1/(2*DW); % spectral width (Hz)
 sfrq = 700; % spectrometer freq (MHz)
-offset = -3765; %offset (Hz) to align simulations and experiments
+offset = 24200; %offset (Hz) to align simulations and experiments ogni 100 scala di 2
 NP = length(zeros(size(t))); % Length of the signal
 f = linspace(-SW, SW, NP); % Frequency axis
+f2 = linspace(-SW+offset, SW+offset, NP);
 aqt = NP / (2*SW); % acquisition time of simulated spectrum
 dig_res_sim_rac_30khz = 1 / aqt; %digital resolution, if everything right matches the exp one
 
@@ -125,14 +135,20 @@ normalized_imaginary = (imaginary_part - min_imaginary) / (max_imaginary - min_i
 normalized_spectrum = normalized_real; %+ 1i * normalized_imaginary;
 normalized_spectrum = normalized_spectrum';
 
+% Interpolate the shifted spectrum
+shifted_spectrum = interp1(f, normalized_spectrum, f2, 'linear', 0);
+
 %% Produce plots
 % plot normalized spectra on each other
 figure(1); clf; hold on; 
-plot(f, normalized_spectrum)
-plot(f, spectrum_cf3_tla_rac_30khz)
+plot(shifted_spectrum)
+plot(normalized_spectrum)
+plot(spectrum_cf3_tla_rac_30khz)
 xlabel('Hz')
-legend('Simulated', 'Experimental')
+legend('Simulated - offset', 'Simulated - original', 'Experimental')
 title('TLA-rac 30kHz')
+
+
 
 
 
