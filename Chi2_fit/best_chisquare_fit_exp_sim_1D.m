@@ -1,3 +1,11 @@
+% Compare experiments and simulations with best T2 and k_ex
+% Author: Ettore Bartalucci, RWTH Aachen
+% Scripts for Bloch-McConnel from Matthias Ernst, ETH Zurich
+% Support and debug with Chatgpt
+% First draft: Aachen, 07.03.24
+% Last update: Aachen, 18.04.24
+% Project: CF3 self decoupling
+
 %% Experimental section
 clear all;
 
@@ -11,32 +19,55 @@ tla_rac_14khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_d
 tla_rac_30khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_30khz_exp_10_211123\pdata\1');
 tla_rac_60khz = rbnmr('D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\Chi2_fit\spectra\TLA_rac_60khz_exp_13_211123\pdata\1');
 
-% Select CF3 region of the spectrum (115ppm-135ppm)
-% For each spectrum, extract the CF3 region
-% You can define this based on your specific data
-cf3_region_indices = 3294:3794; % Indices corresponding to CF3 region
-
 % Extract CF3 spectra for each TLA spectrum
 spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(3294:3794); % here are 250 points from middle of spectrum
 spectrum_cf3_tla_s_30khz = tla_s_30khz.Data(3500:4000); % here are 250 points from middle of spectrum
 spectrum_cf3_tla_s_60khz = tla_s_60khz.Data(55000:65000); % here are 5000 points from middle of spectrum
 spectrum_cf3_tla_rac_14khz = tla_rac_14khz.Data(114922:124922); % here are 5000 points from middle of spectrum
-spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data(3470:3970); % here are 250 points from middle of spectrum
+spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data;%(3470:3970); % here are 250 points from middle of spectrum
 spectrum_cf3_tla_rac_60khz = tla_rac_60khz.Data(54535:64535); % here are 5000 points from middle of spectrum
 
-
+% Normalize experimental spectral intensity between 0 and 1
+spectrum_cf3_tla_s_14khz = spectrum_cf3_tla_s_14khz / max(spectrum_cf3_tla_s_14khz);
+spectrum_cf3_tla_s_30khz = spectrum_cf3_tla_s_30khz / max(spectrum_cf3_tla_s_30khz);
+spectrum_cf3_tla_s_60khz = spectrum_cf3_tla_s_60khz / max(spectrum_cf3_tla_s_60khz);
+spectrum_cf3_tla_rac_14khz = spectrum_cf3_tla_rac_14khz / max(spectrum_cf3_tla_rac_14khz);
+spectrum_cf3_tla_rac_30khz = spectrum_cf3_tla_rac_30khz / max(spectrum_cf3_tla_rac_30khz);
 spectrum_cf3_tla_rac_60khz = spectrum_cf3_tla_rac_60khz / max(spectrum_cf3_tla_rac_60khz);
 
+%% Variables section
+% Bloch-McConnell variables
+k_ex = 60; % extracted from chisquare fit in order: 286,286, 184, 184, 286, 184
+T_2 = 0.017; % extracted from chisquare fit in order: 0.01 for all
+J_cf = 280; % from experimental values (@Igor)
 
-% Initialize variables
-k_ex = 150;
-T_2 = 0.1;
-J_cf = 280; 
-t = linspace(0, 0.1, 501);
-Fs = 1/(t(2) - t(1)); % Sampling frequency (Hz)
+% NMR variables
+t = linspace(0, 0.1, 8192); % time domain size (s)
+dt = t(2) - t(1); % dwell time
+Fs = 1/dt; % Sampling frequency (Hz) 
+sfrq = 700; % spectrometer freq (MHz)
+offset = -3765;
+
+% Compute the  frequency axis
+NP = length(zeros(size(t))); % Length of the signal
+sw = linspace(-Fs/2-offset, Fs/2-offset, NP); % Frequency axis, spectral width
+
+%% Check spectral parameters
+% Check digital resolution experimental spectra
+dig_res_exp_rac_14khz = tla_rac_14khz.Acqus.SW_h / (tla_rac_14khz.Acqus.TD / 2);
+dig_res_exp_rac_30khz = tla_rac_30khz.Acqus.SW_h / (tla_rac_30khz.Acqus.TD / 2);
+dig_res_exp_rac_60khz = tla_rac_60khz.Acqus.SW_h / (tla_rac_60khz.Acqus.TD / 2);
+dig_res_exp_s_14khz = tla_s_14khz.Acqus.SW_h / (tla_s_14khz.Acqus.TD / 2);
+dig_res_exp_s_30khz = tla_s_30khz.Acqus.SW_h / (tla_s_30khz.Acqus.TD / 2);
+dig_res_exp_s_60khz = tla_s_60khz.Acqus.SW_h / (tla_s_60khz.Acqus.TD / 2);
+disp('Digital resolution of experimental spectra are all the same!')
+
+% Check digital resolution simulated spectra
+test = size(sw) / (NP);
+disp(['Digital resolution of simulated spectra: ', num2str(test), ' Hz']);
 
 
-% Simulate signals
+%% Simulate signals
 % Modified Bloch equtions
 L1 = [(-k_ex - pi/T_2 - 1i*pi*J_cf), k_ex;
      k_ex, (-k_ex - pi/T_2 + 1i*pi*J_cf)]; %1i is the imaginary unit
@@ -73,20 +104,17 @@ for i = 1:length(t)
     signal2(i) = sum(sum(U2(:,:,i) .* vec_u2));
 end
 
-% Fourier transform and shift 
+% Fourier transform and shift, see property of fft in matlab
 spectrum1 = fft(signal1);
 spectrum1 = fftshift(spectrum1);
 
 spectrum2 = fft(signal2);
 spectrum2 = fftshift(spectrum2);
 
-% Compute the  frequency axis
-N = length(signal1); % Length of the signal
-f = linspace(-Fs/2, Fs/2, N); % Frequency axis
 
 total_spectrum = spectrum1 + spectrum2;
 
-
+%% Spectral normalization section
 real_part = real(total_spectrum);
 imaginary_part = imag(total_spectrum);
 
@@ -100,26 +128,36 @@ min_imaginary = min(imaginary_part(:));
 normalized_imaginary = (imaginary_part - min_imaginary) / (max_imaginary - min_imaginary);
 
 % Combine the normalized real and imaginary parts to get the normalized spectrum
-normalized_spectrum = normalized_real + 1i * normalized_imaginary;
+normalized_spectrum = normalized_real; %+ 1i * normalized_imaginary;
 normalized_spectrum = normalized_spectrum';
-spectrum_cf3_tla_s_30khz = spectrum_cf3_tla_s_30khz / max(spectrum_cf3_tla_s_30khz);
 
-figure(999);hold on;
-plot(f, normalized_spectrum)
-plot(f, spectrum_cf3_tla_s_30khz)
-
-% Calculate chi-square without division by zero
-real_spectrum_cf3_tla_s_30khz = real(spectrum_cf3_tla_s_30khz);
-real_normalized_spectrum = real(normalized_spectrum);
-non_zero_indices = real_normalized_spectrum ~= 0;
-
-chisquare = sum((real_spectrum_cf3_tla_s_30khz(non_zero_indices) - real_normalized_spectrum(non_zero_indices)).^2 ./ real_normalized_spectrum(non_zero_indices));
+%% Produce plots
+% plot normalized spectra on each other
+figure(1); clf; hold on; 
+plot(sw, normalized_spectrum)
+plot(sw, spectrum_cf3_tla_rac_30khz)
+xlabel('Hz')
+legend('Simulated', 'Experimental')
+title('TLA-rac 30kHz')
 
 
 
 
 
 
-runtime = toc;
-disp(['Elapsed time: ', num2str(runtime), ' seconds']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
