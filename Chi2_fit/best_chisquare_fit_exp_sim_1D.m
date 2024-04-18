@@ -42,15 +42,15 @@ T_2 = 0.017; % extracted from chisquare fit in order: 0.01 for all
 J_cf = 280; % from experimental values (@Igor)
 
 % NMR variables
-t = linspace(0, 0.1, 8192); % time domain size (s)
-dt = t(2) - t(1); % dwell time
-Fs = 1/dt; % Sampling frequency (Hz) 
+t = linspace(0, 0.1, 8192); % time domain size (s) need to match experiment
+DW = 0.0000019; % dwell time
+SW = 1/(2*DW); % spectral width (Hz)
 sfrq = 700; % spectrometer freq (MHz)
-offset = -3765;
-
-% Compute the  frequency axis
+offset = -3765; %offset (Hz) to align simulations and experiments
 NP = length(zeros(size(t))); % Length of the signal
-sw = linspace(-Fs/2-offset, Fs/2-offset, NP); % Frequency axis, spectral width
+f = linspace(-SW, SW, NP); % Frequency axis
+aqt = NP / (2*SW); % acquisition time of simulated spectrum
+dig_res_sim_rac_30khz = 1 / aqt; %digital resolution, if everything right matches the exp one
 
 %% Check spectral parameters
 % Check digital resolution experimental spectra
@@ -61,11 +61,6 @@ dig_res_exp_s_14khz = tla_s_14khz.Acqus.SW_h / (tla_s_14khz.Acqus.TD / 2);
 dig_res_exp_s_30khz = tla_s_30khz.Acqus.SW_h / (tla_s_30khz.Acqus.TD / 2);
 dig_res_exp_s_60khz = tla_s_60khz.Acqus.SW_h / (tla_s_60khz.Acqus.TD / 2);
 disp('Digital resolution of experimental spectra are all the same!')
-
-% Check digital resolution simulated spectra
-test = size(sw) / (NP);
-disp(['Digital resolution of simulated spectra: ', num2str(test), ' Hz']);
-
 
 %% Simulate signals
 % Modified Bloch equtions
@@ -111,7 +106,6 @@ spectrum1 = fftshift(spectrum1);
 spectrum2 = fft(signal2);
 spectrum2 = fftshift(spectrum2);
 
-
 total_spectrum = spectrum1 + spectrum2;
 
 %% Spectral normalization section
@@ -134,8 +128,8 @@ normalized_spectrum = normalized_spectrum';
 %% Produce plots
 % plot normalized spectra on each other
 figure(1); clf; hold on; 
-plot(sw, normalized_spectrum)
-plot(sw, spectrum_cf3_tla_rac_30khz)
+plot(f, normalized_spectrum)
+plot(f, spectrum_cf3_tla_rac_30khz)
 xlabel('Hz')
 legend('Simulated', 'Experimental')
 title('TLA-rac 30kHz')

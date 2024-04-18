@@ -24,7 +24,7 @@ spectrum_cf3_tla_s_14khz = tla_s_14khz.Data(3294:3794); % here are 250 points fr
 spectrum_cf3_tla_s_30khz = tla_s_30khz.Data(3500:4000); % here are 250 points from middle of spectrum
 spectrum_cf3_tla_s_60khz = tla_s_60khz.Data(55000:65000); % here are 5000 points from middle of spectrum
 spectrum_cf3_tla_rac_14khz = tla_rac_14khz.Data(114922:124922); % here are 5000 points from middle of spectrum
-spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data(3470:3970); % here are 250 points from middle of spectrum
+spectrum_cf3_tla_rac_30khz = tla_rac_30khz.Data;%(3470:3970); % here are 250 points from middle of spectrum
 spectrum_cf3_tla_rac_60khz = tla_rac_60khz.Data(54535:64535); % here are 5000 points from middle of spectrum
 
 % Normalize experimental spectral intensity between 0 and 1
@@ -42,13 +42,16 @@ T_2 = 0.017; % extracted from chisquare fit in order: 0.01 for all
 J_cf = 280; % from experimental values (@Igor)
 
 % NMR variables
-t = linspace(0, 0.1, 501); % time domain size (s)
+t = linspace(0, 0.1, 8192); % time domain size (s) need to match experiment
 dt = t(2) - t(1); % dwell time
-Fs = 1/dt; % Sampling frequency (Hz) (5000Hz)
+Fs = 1/dt; % Sampling frequency (Hz) 
+SW = 1/(2*dt); % spectral width (Hz)
 sfrq = 700; % spectrometer freq (MHz)
-% Compute the  frequency axis
+offset = -3765; %offset (Hz) to align simulations and experiments
 NP = length(zeros(size(t))); % Length of the signal
-sw = linspace(-Fs/2, Fs/2, NP); % Frequency axis, spectral width
+f = linspace(-SW, SW, NP); % Frequency axis
+aqt = NP / SW; % acquisition time of simulated spectrum
+dig_res_sim_rac_30khz = 1 / aqt; %digital resolution, if everything right
 
 %% Check spectral parameters
 % Check digital resolution experimental spectra
@@ -61,7 +64,7 @@ dig_res_exp_s_60khz = tla_s_60khz.Acqus.SW_h / (tla_s_60khz.Acqus.TD / 2);
 disp('Digital resolution of experimental spectra are all the same!')
 
 % Check digital resolution simulated spectra
-test = size(sw) / (NP);
+test = size(SW) / (NP);
 disp(['Digital resolution of simulated spectra: ', num2str(test), ' Hz']);
 
 
@@ -132,8 +135,8 @@ normalized_spectrum = normalized_spectrum';
 %% Produce plots
 % plot normalized spectra on each other
 figure(1); clf; hold on; 
-plot(sw, normalized_spectrum)
-plot(sw, spectrum_cf3_tla_rac_30khz)
+plot(f, normalized_spectrum)
+plot(f, spectrum_cf3_tla_rac_30khz)
 xlabel('Hz')
 legend('Simulated', 'Experimental')
 title('TLA-rac 30kHz')
