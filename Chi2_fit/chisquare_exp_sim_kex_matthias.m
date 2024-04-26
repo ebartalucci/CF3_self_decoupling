@@ -59,18 +59,18 @@ spectra = {spectrum_cf3_tla_s_14khz, spectrum_cf3_tla_s_30khz, spectrum_cf3_tla_
 subplot_titles = {'S-TFLA 14 kHz','S-TFLA 30 kHz','S-TFLA 60 kHz',...
                   'rac-TFLA 14 kHz','rac-TFLA 30 kHz','rac-TFLA 60 kHz'};
 
-figure(999);
-for i = 1:6
-    subplot(3, 2, i);
-    plot(spectra{i});
-    title(subplot_titles{i});
-    ylim([0,1.2]);
-end
+% figure(999);
+% for i = 1:6
+%     subplot(3, 2, i);
+%     plot(spectra{i});
+%     title(subplot_titles{i});
+%     ylim([0,1.2]);
+% end
 
 %% Simulations section
 % Define range of k_ex and T_2
-k_ex_values = linspace(1, 1000, 10); % change this to 50 or 100, takes long
-T_2_values = linspace(0.01, 0.1, 10); % change this to 50 or 100, takes long
+k_ex_values = linspace(1, 1000, 50); % change this to 50 or 100, takes long
+T_2_values = linspace(0.01, 0.1, 50); % change this to 50 or 100, takes long
 J_cf = 280; % exp value
 
 % Define different t values that fits the experimental sizes
