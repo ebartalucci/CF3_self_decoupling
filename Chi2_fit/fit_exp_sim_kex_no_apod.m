@@ -1,4 +1,4 @@
-% Chisquare fit to extract K_ex and T_2
+% Least square fit to extract K_ex and T_2
 % Author: Ettore Bartalucci, RWTH Aachen
 % Scripts for Bloch-McConnel from Matthias Ernst, ETH Zurich
 % Support and debug with Chatgpt

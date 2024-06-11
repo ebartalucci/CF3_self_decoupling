@@ -1,4 +1,4 @@
-% Chisquare fit to extract K_ex and T_2
+% Least square fit to extract K_ex and T_2
 % Author: Ettore Bartalucci, RWTH Aachen
 % Scripts for Bloch-McConnel from Matthias Ernst, ETH Zurich
 % Support and debug with Chatgpt
@@ -114,7 +114,7 @@ for k=1:6
   axis([-5 5 -0.1 1.1])
   switch k
   case 1
-    title('S 13 kHz')
+    title('S 14 kHz')
   case 2
     title('S 30 kHz')
   case 3

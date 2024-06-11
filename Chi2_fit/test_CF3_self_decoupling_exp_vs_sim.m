@@ -22,8 +22,8 @@
 % plot(spectrum_cf3)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%% TEST: Simulate one spectrum for k_ex=0.001 and T_2=0.03 %%%%%%%%%
-
+%%%%%%%%% TEST: Simulate one spectrum for k_ex and T_2 %%%%%%%%%
+tic
 % Initialize variables
 k_ex = 150;
 T_2 = 0.1;
