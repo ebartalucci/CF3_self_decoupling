@@ -70,8 +70,6 @@ subplot_titles = {'S-TFLA 14 kHz','S-TFLA 30 kHz','S-TFLA 60 kHz',...
 
 %% Simulations section
 % Define range of k_ex and T_2
-k_ex_values = linspace(1, 1000, 50); % change this to 50 or 100, takes long
-T_2_values = linspace(0.01, 0.1, 50); % change this to 50 or 100, takes long
 J_cf = 280; % exp value
 
 % Define different t values that fits the experimental sizes
@@ -89,20 +87,32 @@ for t_index = 1:length(t_values)
     switch t_index
         case 1
             current_spectrum = spectrum_cf3_tla_s_14khz;
+            k_ex_values = linspace(500, 1000, 50);
+            T_2_values = linspace(0.01, 0.1, 50);
             offset = 6750; %offset (Hz) to align simulations and experiments
         case 2
+            k_ex_values = linspace(1, 300, 50);
+            T_2_values = linspace(0.01, 0.1, 50);
             current_spectrum = spectrum_cf3_tla_s_30khz;
             offset = 4250; %offset (Hz) to align simulations and experiments
         case 3
+            k_ex_values = linspace(1, 100, 50);
+            T_2_values = linspace(0.01, 0.1, 50);
             current_spectrum = spectrum_cf3_tla_s_60khz;
             offset = 4250;
         case 4
+            k_ex_values = linspace(1, 500, 50);
+            T_2_values = linspace(0.01, 0.1, 50);
             current_spectrum = spectrum_cf3_tla_rac_14khz;
             offset = 4250;
         case 5
+            k_ex_values = linspace(1, 200, 50);
+            T_2_values = linspace(0.01, 0.1, 50);
             current_spectrum = spectrum_cf3_tla_rac_30khz;
             offset = 4600; %offset (Hz) to align simulations and experiments 
         case 6
+            k_ex_values = linspace(1, 100, 50);
+            T_2_values = linspace(0.01, 0.1, 50);
             current_spectrum = spectrum_cf3_tla_rac_60khz;
             offset = 4600;
     end

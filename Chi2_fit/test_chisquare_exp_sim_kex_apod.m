@@ -52,7 +52,7 @@ data(4,:)=spectrum_cf3_tla_rac_14khz;
 data(5,:)=spectrum_cf3_tla_rac_30khz;
 data(6,:)=spectrum_cf3_tla_rac_60khz;
 
-%phasing using kathrin's function
+% phasing and processing using kathrin's function
 datap=zeros(6,32768);
 datap(1,:)=proc_fid(data(1,:),100000,32768,20,66,-38,0,2,15900,67);
 datap(2,:)=proc_fid(data(2,:),100000,32768,20,210,-38,0,2,15900,67);
@@ -85,6 +85,7 @@ end
 
 plot(xax1,datapx1)
 
+% phases
 p0 = [-250 400 2 0];
 p =zeros(6,4);
 
@@ -133,9 +134,16 @@ orient('landscape')
 
 print -dpdf -fillpage figure_fit_cos2_apod.pdf
 
+
 %% Chi square simulations
 J_cf = 280; 
 fileID = fopen('chisquare_mins.txt','w');
+
+
+% Define different t values that fits the experimental sizes
+t_values = {linspace(0, 0.1, 8192), linspace(0, 0.1, 8192), ...
+            linspace(0, 0.1, 131072), linspace(0, 0.1, 262144), ...
+            linspace(0, 0.1, 8192), linspace(0, 0.1, 131072)};
 
 % loop on exp spectra
 for k=1:6
@@ -144,51 +152,56 @@ for k=1:6
             current_spectrum = datapx1(k,:);
             k_ex_values = linspace(500, 1000, 50);
             T_2_values = linspace(0.01, 0.1, 50); 
-            offset = 6750;
+            offset = 35600;
         
         case 2 % s 30khz
             current_spectrum = datapx1(k,:);
             k_ex_values = linspace(1, 300, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 4250;
+            offset = 22300;
 
         case 3 % s 60 khz
             current_spectrum = datapx1(k,:);
             k_ex_values = linspace(1, 100, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 4250;
+            offset = 1;
 
         case 4 % rac 14khz
             current_spectrum = datapx1(k,:);
             k_ex_values = linspace(1, 500, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 4250;
+            offset = 1;
 
         case 5 % rac 30 khz
             current_spectrum = datapx1(k,:);
             k_ex_values = linspace(1, 200, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 4600; 
+            offset = 24200;
 
         case 6 % rac 60 khz
             current_spectrum = datapx1(k,:);
             k_ex_values = linspace(1, 100, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 4600;
+            offset = 1;
     end
     
+    % NMR variables
+    t = t_values{t_index}; % time domain size (s) need to match experiment
+    DW = t(2) - t(1); % dwell time
+    SW = 1/(2*DW); % spectral width (Hz)
+    NP = length(zeros(size(t))); % Length of the signal
+      
     % Store chi-square statistics
     chi_square_matrix = zeros(length(k_ex_values), length(T_2_values));
-    
-    % simulations time domain that should coincide with the experiments
-    t = length(datapx1(k,:));
-    NP = length(zeros(size(t))); % Length of the signal
-    f = linspace(-sw/2, sw/2, NP); % Frequency axis
-    f2 = linspace(-sw/2+offset, sw/2+offset, NP);
+
+    % Compute the  frequency axis
+    f = linspace(-SW, SW, NP); % Frequency axis
+    f2 = linspace(-SW+offset, SW+offset, NP); % Shifted axis by offset
     
     % Compute final spectrum for all combinations of k_ex and T_2 values
     for j = 1:length(k_ex_values)
         for T = 1:length(T_2_values)
+            
             k_ex = k_ex_values(j);
             T_2 = T_2_values(T);
 
@@ -202,14 +215,14 @@ for k=1:6
                   0, 0, 3*k_ex, (-3*k_ex - pi/T_2 +3*1i*pi*J_cf)];
         
             % Compute the matrix exponentials to get the time evolutions
-            U1 = zeros(2, 2, length(t)); % Preallocate U1 matrix
-            for i = 1:length(t)
-                U1(:,:,i) = expm(L1 * abs(t(i)));
+            U1 = zeros(2, 2, length(time)); % Preallocate U1 matrix
+            for i = 1:length(time)
+                U1(:,:,i) = expm(L1 * abs(time(i)));
             end
         
-            U2 = zeros(4, 4, length(t)); % Preallocate U2 matrix
-            for i = 1:length(t)
-                U2(:,:,i) = expm(L2 * abs(t(i)));
+            U2 = zeros(4, 4, length(time)); % Preallocate U2 matrix
+            for i = 1:length(time)
+                U2(:,:,i) = expm(L2 * abs(time(i)));
             end
         
             % Get the signals
@@ -217,14 +230,14 @@ for k=1:6
             vec_u2 = ones(4, 1);
         
             % Compute signal 1
-            signal1 = zeros(size(t));
-            for i = 1:length(t)
+            signal1 = zeros(size(time));
+            for i = 1:length(time)
                 signal1(i) = sum(sum(U1(:,:,i) .* vec_u1));
             end
             
             % Compute signal2
-            signal2 = zeros(size(t));
-            for i = 1:length(t)
+            signal2 = zeros(size(time));
+            for i = 1:length(time)
                 signal2(i) = sum(sum(U2(:,:,i) .* vec_u2));
             end
         
@@ -239,12 +252,12 @@ for k=1:6
             final_spectrum = spectrum1 + spectrum2;
 
             final_spectrum = real(final_spectrum(:))/max(real(final_spectrum));
-            %plot(f,final_spectrum,f2,current_spectrum)
+            plot(f,final_spectrum,f2,current_spectrum)
             [a1,b1a] = min(abs(f+3000));
             [a1,b1b] = min(abs(f-3000));
             [a1,b2a] = min(abs(f2+3000));
             b2b=b2a+b1b-b1a;
-    		%plot(f(b1a:b1b),final_spectrum(b1a:b1b),f2(b2a:b2b),current_spectrum(b2a:b2b))
+    		plot(f(b1a:b1b),final_spectrum(b1a:b1b),f2(b2a:b2b),current_spectrum(b2a:b2b))
             chi_square_matrix(k, T) = sum((final_spectrum(b1a:b1b)-current_spectrum(b2a:b2b)).^2);
         end
     end
@@ -275,6 +288,7 @@ for k=1:6
     normalized_chi_square_matrix = chi_square_matrix / max(max(chi_square_matrix));
 
     % Plot the chi-square statistics as a heatmap with a specified colormap
+    figure(1000);
     subplot(2, 3, k); 
     imagesc(T_2_values, k_ex_values, normalized_chi_square_matrix);
     colormap(jet); 
