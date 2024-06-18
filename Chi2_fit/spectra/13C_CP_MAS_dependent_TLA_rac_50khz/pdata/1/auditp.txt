@@ -1,0 +1,44 @@
+##TITLE= Audit trail, TopSpin 4.1.3
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= Ettore Bartalucci
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/801/pdata/1/auditp.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2023-11-22 07:07:42.463 +0100>,<etba>,<CZC007DNDL>,<go4>,<TopSpin 3.6.2>,
+      <created by zg
+	started at 2023-11-21 19:41:49.605 +0100,
+	POWCHK disabled, PULCHK disabled,
+       configuration hash MD5:
+       4A C1 91 A2 36 8C 52 65 82 84 CA 3C A0 38 FA E6
+       data hash MD5: 3K
+       D1 C4 52 72 C9 20 72 3A AA 76 D9 4E FA EE FC FC>)
+(   2,<2024-01-10 09:24:04.014 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       em LB = 30 SI = 128K 
+       data hash MD5: 128K
+       93 7F 6D 1C F1 D1 BC 1F 2D DB 3D 45 6A F1 D7 FC>)
+(   3,<2024-01-10 09:24:04.201 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <ft FT_mod = 6 PKNL = 1 SI = 128K 
+       data hash MD5: 128K
+       23 7A 1E F8 60 1F 08 15 99 16 28 70 EE E7 57 77>)
+(   4,<2024-01-10 09:24:04.942 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <apk 
+       data hash MD5: 128K
+       4D E8 90 6C E3 DE B5 71 62 C3 B9 D3 7A 01 2B 07>)
+(   5,<2024-01-10 09:24:05.101 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs n ABSG = 5 
+       data hash MD5: 128K
+       A8 B4 F5 5C DD 14 71 07 4B 03 EA 1C 4E A6 B8 55>)
+(   6,<2024-01-29 13:51:04.119 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -23.26181 PHC1 = -252.9821 SI = 128K 
+       data hash MD5: 128K
+       8A 42 5F E7 67 7C E3 B6 30 B3 28 AB C8 B5 12 20>)
+(   7,<2024-01-29 13:51:05.117 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs ABSG = 5 
+       data hash MD5: 128K
+       50 85 88 F6 94 AE 26 4E C6 70 02 30 B2 BD 53 30>)
+##END=
+
+$$ hash MD5
+$$ 35 CF A9 AE 30 CC AF 9C 5B B7 2C A9 24 1F B5 8E

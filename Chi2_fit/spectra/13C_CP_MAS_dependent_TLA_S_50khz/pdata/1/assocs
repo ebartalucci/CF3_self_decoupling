@@ -1,0 +1,11 @@
+##TITLE= Parameter file, TopSpin 3.6.2
+##JCAMPDX= 5.0
+##DATATYPE= Parameter Values
+##NPOINTS= 3	$$ modification sequence number
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= etba
+$$ 2023-10-13 09:34:57.456 +0200  etba@CZC007DNDL
+$$ /opt/nmrdata/etba/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/12/pdata/1/assocs
+$$ process /opt/topspin3.6.2/prog/mod/dataserver
+##$MULTDISP= <>
+##END=

@@ -1,0 +1,37 @@
+##TITLE= Audit trail, TopSpin 3.6.2
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= etba
+$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/11/pdata/1/auditp.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2023-11-21 17:53:30.194 +0100>,<etba>,<CZC007DNDL>,<go4>,<TopSpin 3.6.2>,
+      <created by zg
+	started at 2023-11-21 16:09:35.358 +0100,
+	POWCHK disabled, PULCHK disabled,
+       configuration hash MD5:
+       4A C1 91 A2 36 8C 52 65 82 84 CA 3C A0 38 FA E6
+       data hash MD5: 3K
+       00 63 38 E7 B4 44 23 C1 00 31 5E 73 38 D3 1F DE>)
+(   2,<2023-11-21 17:53:41.432 +0100>,<etba>,<CZC007DNDL>,<proc1d>,<TopSpin 3.6.2>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -27.32168 PHC1 = -237.2 SI = 128K 
+       data hash MD5: 128K
+       26 BC 8F 35 4E F1 7B A6 92 70 9C 69 26 82 51 F6>)
+(   3,<2023-11-21 17:53:44.062 +0100>,<etba>,<CZC007DNDL>,<proc1d>,<TopSpin 3.6.2>,
+      <apk 
+       data hash MD5: 128K
+       34 02 9B B5 7A 82 46 D0 D3 CF 50 61 AC 7E AE FF>)
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/11/pdata/1/auditp.txt
+(   4,<2024-01-29 13:50:59.129 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -6.791891 PHC1 = -289.1945 SI = 128K 
+       data hash MD5: 128K
+       D3 2B FC 18 B9 1E 64 C5 82 B8 5B F9 13 E9 ED BA>)
+(   5,<2024-01-29 13:51:00.024 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs ABSG = 5 
+       data hash MD5: 128K
+       BD 3E 0A DE 3A 34 B3 45 87 10 9B 48 C4 73 50 8F>)
+##END=
+
+$$ hash MD5
+$$ 63 E2 3D 25 22 24 F6 35 FC BF AD 9A 89 9E 7A CE

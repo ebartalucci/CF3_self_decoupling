@@ -1,0 +1,18 @@
+##TITLE= Audit trail, TopSpin 3.6.2
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= etba
+$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/801/audita.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2023-11-22 07:07:42.463 +0100>,<etba>,<CZC007DNDL>,<go4>,<TopSpin 3.6.2>,
+      <created by zg
+	started at 2023-11-21 19:41:49.605 +0100,
+	POWCHK disabled, PULCHK disabled,
+       configuration hash MD5:
+       4A C1 91 A2 36 8C 52 65 82 84 CA 3C A0 38 FA E6
+       data hash MD5: 3K
+       D1 C4 52 72 C9 20 72 3A AA 76 D9 4E FA EE FC FC>)
+##END=
+
+$$ hash MD5
+$$ 0F 77 58 BB 23 B0 14 AC EF 09 7D 73 EF 5A AF 21

@@ -1,0 +1,11 @@
+##TITLE= Parameter file, TopSpin 4.1.3
+##JCAMPDX= 5.0
+##DATATYPE= Parameter Values
+##NPOINTS= 5	$$ modification sequence number
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= etba
+$$ 2024-01-29 13:45:27.724 +0100  Ettore Bartalucci@Wiegand3
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/161023_3p2mm_HXY_TLa_S_CF3_MAS_TWC_EB/200/pdata/1/assocs
+$$ process C:\Bruker\TopSpin4.1.3\prog\mod\dataserver.exe
+##$MULTDISP= <D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/161023_3p2mm_HXY_TLa_S_CF3_MAS_TWC_EB/100/pdata/1|D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/161023_3p2mm_HXY_TLa_S_CF3_MAS_TWC_EB/300/pdata/1|D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/14/pdata/1|D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/11/pdata/1|D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/12/pdata/1|D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/15/pdata/1>
+##END=

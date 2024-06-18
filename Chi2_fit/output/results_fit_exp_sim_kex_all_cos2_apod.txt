@@ -1,0 +1,15 @@
+Spectrum: 1.000000
+k_{ex} = 716.5 s^{-1}Spectrum: 2.000000
+k_{ex} = 534.5 s^{-1}Spectrum: 3.000000
+k_{ex} = 354.2 s^{-1}Spectrum: 4.000000
+k_{ex} = 190.2 s^{-1}Spectrum: 5.000000
+k_{ex} =  85.6 s^{-1}Spectrum: 6.000000
+k_{ex} =  12.9 s^{-1}Spectrum: 7.000000
+k_{ex} =   4.4 s^{-1}Spectrum: 8.000000
+k_{ex} = 209.0 s^{-1}Spectrum: 9.000000
+k_{ex} = 114.4 s^{-1}Spectrum: 10.000000
+k_{ex} =  72.9 s^{-1}Spectrum: 11.000000
+k_{ex} =  34.1 s^{-1}Spectrum: 12.000000
+k_{ex} =  19.8 s^{-1}Spectrum: 13.000000
+k_{ex} =   0.0 s^{-1}Spectrum: 14.000000
+k_{ex} =   0.0 s^{-1}

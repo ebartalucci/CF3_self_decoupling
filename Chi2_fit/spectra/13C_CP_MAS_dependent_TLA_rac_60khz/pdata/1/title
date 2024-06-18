@@ -1,0 +1,14 @@
+13C CP MAS
+TLa - racemic
+purchased, not milled not grinded
+60kHz MAS: CP condition is 100khz(1H) - 40khz (13C) = 60khz MAS
+
+vtu: 270K, setting 3
+with 1H filter
+
+rotor not marked - spin gain too high otherwise
+
+shim from november 1p3mm_hx_20231102.nisc
+
+500W on 13C (not broadband)
+0-13C LP (old) filter on 13C

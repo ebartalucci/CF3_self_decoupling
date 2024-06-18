@@ -1,0 +1,72 @@
+##TITLE= Audit trail, TopSpin 3.6.2
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= etba
+$$ /opt/nmrdata/etba/161023_3p2mm_HXY_TLa_S_CF3_MAS_TWC_EB/100/pdata/1/auditp.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2023-10-16 20:25:47.021 +0200>,<etba>,<CZC007DNDL>,<go4>,<TopSpin 3.6.2>,
+      <created by zg
+	started at 2023-10-16 18:07:38.602 +0200,
+	POWCHK disabled, PULCHK disabled,
+       configuration hash MD5:
+       3E 3F 07 9A F6 87 9E 77 77 42 2C 07 C7 7D 0A 9C
+       data hash MD5: 3K
+       B8 4A B4 37 5B 56 B8 C9 39 83 FC E2 07 73 25 CF>)
+(   2,<2023-10-17 08:06:07.721 +0200>,<etba>,<CZC007DNDL>,<proc1d>,<TopSpin 3.6.2>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -155.7908 PHC1 = -276.2375 SI = 256K 
+       data hash MD5: 256K
+       6C 0D A6 93 EF 01 CC 30 7C C4 0F DF 67 2A 96 BB>)
+(   3,<2023-10-17 08:06:10.467 +0200>,<etba>,<CZC007DNDL>,<proc1d>,<TopSpin 3.6.2>,
+      <apk 
+       data hash MD5: 256K
+       6C B0 2F 63 A9 A4 DF E3 72 C7 A4 78 E8 7F CF 27>)
+(   4,<2023-10-17 08:07:41.326 +0200>,<etba>,<CZC007DNDL>,<audit>,<TopSpin 3.6.2>,
+      <user comment:
+       TITLE=13C CP
+       TLa-S - CF3 couplings
+       CQ245(s) TLa
+       MAS = 17.5 kHz
+       3.2mm HXY
+       CP = 60-42.5TITLE_END
+       data hash MD5: 256K
+       6C B0 2F 63 A9 A4 DF E3 72 C7 A4 78 E8 7F CF 27>)
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/161023_3p2mm_HXY_TLa_S_CF3_MAS_TWC_EB/100/pdata/1/auditp.txt
+(   5,<2023-11-13 09:57:41.124 +0100>,<Ettore Bartalucci>,<Wiegand3>,<dataserver>,<TopSpin 4.1.3>,
+      <Spectrum calibrated, SF was set. Old value: 176.081472 New value: 176.081455. Peak list modified: Yes
+       data hash MD5: 256K
+       6C B0 2F 63 A9 A4 DF E3 72 C7 A4 78 E8 7F CF 27>)
+(   6,<2023-11-13 09:57:41.146 +0100>,<Ettore Bartalucci>,<Wiegand3>,<dataserver>,<TopSpin 4.1.3>,
+      <Spectrum calibrated, OFFSET was set. Old value: 369.534400 New value: 369.630051. Peak list modified: Yes
+       data hash MD5: 256K
+       6C B0 2F 63 A9 A4 DF E3 72 C7 A4 78 E8 7F CF 27>)
+(   7,<2023-11-13 09:58:55.063 +0100>,<Ettore Bartalucci>,<Wiegand3>,<dataserver>,<TopSpin 4.1.3>,
+      <Spectrum calibrated, SF was set. Old value: 176.081455 New value: 176.081457. Peak list modified: Yes
+       data hash MD5: 256K
+       6C B0 2F 63 A9 A4 DF E3 72 C7 A4 78 E8 7F CF 27>)
+(   8,<2023-11-13 09:58:55.097 +0100>,<Ettore Bartalucci>,<Wiegand3>,<dataserver>,<TopSpin 4.1.3>,
+      <Spectrum calibrated, OFFSET was set. Old value: 369.630100 New value: 369.619543. Peak list modified: Yes
+       data hash MD5: 256K
+       6C B0 2F 63 A9 A4 DF E3 72 C7 A4 78 E8 7F CF 27>)
+(   9,<2023-12-11 14:24:18.126 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -137.2599 PHC1 = -285.844 SI = 8K 
+       data hash MD5: 8K
+       B2 3A 73 19 A4 DE 6F E5 24 DB D9 43 70 B6 06 81>)
+(  10,<2024-01-29 13:42:15.862 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -137.2599 PHC1 = -285.844 SI = 8K 
+       data hash MD5: 8K
+       B2 3A 73 19 A4 DE 6F E5 24 DB D9 43 70 B6 06 81>)
+(  11,<2024-01-29 13:42:16.772 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs ABSG = 5 
+       data hash MD5: 8K
+       CA 3D 6E C7 C1 F4 93 85 96 49 77 BA 92 7C 38 C6>)
+(  12,<2024-03-25 11:20:56.582 +0100>,<Ettore Bartalucci>,<Wiegand3>,<peak>,<TopSpin 4.1.3>,
+      <1D Peak picking
+       data hash MD5: 8K
+       CA 3D 6E C7 C1 F4 93 85 96 49 77 BA 92 7C 38 C6>)
+##END=
+
+$$ hash MD5
+$$ 87 B4 48 C1 84 52 24 1A 57 93 F1 DE F1 59 9B B3

@@ -80,7 +80,7 @@ t_values = {linspace(0, 8191*1e-5, 8192), linspace(0, 8191*1e-5, 8192), ...
             linspace(0, 8191*1e-5, 8192), linspace(0, 131071*1e-5, 131072)};
 
 % Printing file
-fileID = fopen('chisquare_mins.txt','w');
+fileID = fopen('chisquare_mins_no_apod.txt','w');
 
 % Loop over each TLA spectrum
 for t_index = 1:length(t_values)
