@@ -1,52 +1,53 @@
-##TITLE= Audit trail, TopSpin 3.6.2
+##TITLE= Audit trail, TopSpin 4.1.3
 ##JCAMPDX= 5.01
 ##ORIGIN= Bruker BioSpin GmbH
-##OWNER= etba
-$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/13/pdata/1/auditp.txt
+##OWNER= Ettore Bartalucci
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/801/pdata/1/auditp.txt
 ##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
-(   1,<2023-11-22 11:31:51.314 +0100>,<etba>,<CZC007DNDL>,<go4>,<TopSpin 3.6.2>,
+(   1,<2023-11-22 07:07:42.463 +0100>,<etba>,<CZC007DNDL>,<go4>,<TopSpin 3.6.2>,
       <created by zg
-	started at 2023-11-22 10:32:48.332 +0100,
+	started at 2023-11-21 19:41:49.605 +0100,
 	POWCHK disabled, PULCHK disabled,
-       terminated by command 'stop'
        configuration hash MD5:
        4A C1 91 A2 36 8C 52 65 82 84 CA 3C A0 38 FA E6
        data hash MD5: 3K
-       9B 10 9F 90 56 5A 54 05 1F AD 62 9D 79 7D 27 1B>)
-(   2,<2023-11-22 11:33:33.247 +0100>,<etba>,<CZC007DNDL>,<proc1d>,<TopSpin 3.6.2>,
+       D1 C4 52 72 C9 20 72 3A AA 76 D9 4E FA EE FC FC>)
+(   2,<2024-01-10 09:24:04.014 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
       <Start of raw data processing
-       efp LB = 30 FT_mod = 6 PKNL = 1 PHC0 = -2.48666 PHC1 = -294.3029 SI = 128K 
+       em LB = 30 SI = 128K 
        data hash MD5: 128K
-       B0 28 07 2D F2 D2 8C DB 69 00 28 A6 CA FA 57 91>)
-(   3,<2023-11-22 11:33:33.285 +0100>,<etba>,<CZC007DNDL>,<proc1d>,<TopSpin 3.6.2>,
+       93 7F 6D 1C F1 D1 BC 1F 2D DB 3D 45 6A F1 D7 FC>)
+(   3,<2024-01-10 09:24:04.201 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <ft FT_mod = 6 PKNL = 1 SI = 128K 
+       data hash MD5: 128K
+       23 7A 1E F8 60 1F 08 15 99 16 28 70 EE E7 57 77>)
+(   4,<2024-01-10 09:24:04.942 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <apk 
+       data hash MD5: 128K
+       4D E8 90 6C E3 DE B5 71 62 C3 B9 D3 7A 01 2B 07>)
+(   5,<2024-01-10 09:24:05.101 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
       <abs n ABSG = 5 
        data hash MD5: 128K
-       FA B8 E5 28 64 F2 CE 25 61 2D 3D 96 C6 F3 83 A5>)
-$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/13/pdata/1/auditp.txt
-(   4,<2023-12-11 14:17:27.588 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+       A8 B4 F5 5C DD 14 71 07 4B 03 EA 1C 4E A6 B8 55>)
+(   6,<2024-01-29 13:51:04.119 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
       <Start of raw data processing
-       fp FT_mod = 6 PKNL = 1 PHC0 = -2.48666 PHC1 = -294.3029 SI = 128K 
+       fp FT_mod = 6 PKNL = 1 PHC0 = -23.26181 PHC1 = -252.9821 SI = 128K 
        data hash MD5: 128K
-       1A 0C A9 91 B9 7B 72 82 83 61 2B D0 A3 D0 26 55>)
-(   5,<2024-01-29 13:51:08.232 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
-      <Start of raw data processing
-       fp FT_mod = 6 PKNL = 1 PHC0 = -2.48666 PHC1 = -294.3029 SI = 128K 
-       data hash MD5: 128K
-       1A 0C A9 91 B9 7B 72 82 83 61 2B D0 A3 D0 26 55>)
-(   6,<2024-01-29 13:51:09.217 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+       8A 42 5F E7 67 7C E3 B6 30 B3 28 AB C8 B5 12 20>)
+(   7,<2024-01-29 13:51:05.117 +0100>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
       <abs ABSG = 5 
        data hash MD5: 128K
-       2A 38 F8 5C 02 F2 D8 1B 9B 0D 6D F7 3B FE BE D2>)
-(   7,<2024-04-08 10:15:31.711 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+       50 85 88 F6 94 AE 26 4E C6 70 02 30 B2 BD 53 30>)
+(   8,<2024-06-20 12:38:00.038 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
       <Start of raw data processing
-       fp FT_mod = 6 PKNL = 1 PHC0 = -2.48666 PHC1 = -294.3029 SI = 128K 
-       data hash MD5: 128K
-       1A 0C A9 91 B9 7B 72 82 83 61 2B D0 A3 D0 26 55>)
-(   8,<2024-04-08 10:15:33.728 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+       fp FT_mod = 6 PKNL = 1 PHC0 = -23.26181 PHC1 = -252.9821 SI = 8K 
+       data hash MD5: 8K
+       0E 13 55 B8 89 56 2B 7C AD 7B 35 F8 87 C0 EE CE>)
+(   9,<2024-06-20 12:38:00.700 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
       <abs ABSG = 5 
-       data hash MD5: 128K
-       2A 38 F8 5C 02 F2 D8 1B 9B 0D 6D F7 3B FE BE D2>)
+       data hash MD5: 8K
+       5D C2 69 FA A2 FD B4 36 01 DB D4 0A BE EB E3 1A>)
 ##END=
 
 $$ hash MD5
-$$ ED BF E9 A5 A3 95 F1 44 A0 54 11 1A D0 88 C3 97
+$$ 10 2C 23 56 09 3E 3B C0 70 33 BE A4 7E 82 DF E0

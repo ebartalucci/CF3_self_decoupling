@@ -36,7 +36,16 @@ $$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/221123_3p2mm_TLa_rac_CF3_MAS_dependenc
       <abs ABSG = 5 
        data hash MD5: 256K
        78 0E 07 6C E8 27 49 0F E3 51 10 F9 91 98 27 4D>)
+(   7,<2024-06-20 12:34:13.372 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = -160.0072 PHC1 = -277.1208 SI = 8K 
+       data hash MD5: 8K
+       74 EB 61 06 07 61 B8 4C 68 7B 17 50 41 3B B0 70>)
+(   8,<2024-06-20 12:34:14.228 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs ABSG = 5 
+       data hash MD5: 8K
+       FA 99 7C 16 99 41 F6 2A 8A 9F C5 7D E8 4E FB 55>)
 ##END=
 
 $$ hash MD5
-$$ AA 62 33 05 75 0E C2 43 B0 CD F9 6F 1D 72 22 30
+$$ 53 19 9F D8 17 C6 A2 7A 52 87 B2 F1 F6 AB 4C 18

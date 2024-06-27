@@ -4,8 +4,8 @@
 ##NPOINTS= 1	$$ modification sequence number
 ##ORIGIN= Bruker BioSpin GmbH
 ##OWNER= etba
-$$ 2023-11-21 17:58:20.231 +0100  etba@CZC007DNDL
-$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/801/pdata/1/clevels
+$$ 2023-11-21 13:23:47.823 +0100  etba@CZC007DNDL
+$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/13/pdata/1/clevels
 $$ process /opt/topspin3.6.2/prog/mod/edparproc
 ##$LEVELS= (0..255)
 381.99 -381.99 404.18 -404.18 427.65 -427.65 452.49 -452.49 478.77 -478.77

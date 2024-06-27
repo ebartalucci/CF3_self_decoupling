@@ -32,7 +32,16 @@ $$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/121023_1p3mm_TLa_S_CF3_variable_MAS_TW
       <abs ABSG = 5 
        data hash MD5: 128K
        28 68 B4 39 69 4C 27 D3 93 7F AE 14 6A A8 64 EB>)
+(   6,<2024-06-20 12:30:09.092 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = 6.618607 PHC1 = -310.5236 SI = 8K 
+       data hash MD5: 8K
+       58 77 0A A5 C1 E8 6D FB 42 A6 6E 03 33 F3 E1 04>)
+(   7,<2024-06-20 12:30:11.242 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs ABSG = 5 
+       data hash MD5: 8K
+       54 67 88 DA 62 F2 D8 CE 1D 08 A9 0A 64 99 7D 24>)
 ##END=
 
 $$ hash MD5
-$$ 78 86 ED CC 3E 94 95 51 42 00 BC B4 30 8A 1C 3F
+$$ EE AF FE 78 C9 AC FB C4 F2 5C EA 4C 59 9F 0C 34

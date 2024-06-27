@@ -9,6 +9,9 @@
 clear all;
 tic;
 
+% Printing file
+fileID = fopen('results_fit_exp_sim_kex_all_no_apod.txt','w');
+
 %% Load 14 spectra
 
 td=3072;
@@ -128,13 +131,13 @@ datap(6,:)=proc_fid(data(6,:),100000,32768,0,210,-38,0,0,15900,67);
 datap(7,:)=proc_fid(data(7,:),100000,32768,0,210,-38,0,0,15900,67);
 
 % rac-TFLA
-datap(8,:)=proc_fid(data(8,:),100000,32768,20,62,-38,0,2,15900,67);
-datap(9,:)=proc_fid(data(9,:),100000,32768,20,60,-38,0,2,15900,67);
-datap(10,:)=proc_fid(data(10,:),100000,32768,20,60,-38,0,2,15900,67);
-datap(11,:)=proc_fid(data(11,:),100000,32768,20,210,-38,0,2,15900,67);
-datap(12,:)=proc_fid(data(12,:),100000,32768,20,206,-38,0,2,15900,67);
-datap(13,:)=proc_fid(data(13,:),100000,32768,20,210,-38,0,2,15900,67);
-datap(14,:)=proc_fid(data(14,:),100000,32768,20,210,-38,0,2,15900,67);
+datap(8,:)=proc_fid(data(8,:),100000,32768,0,62,-38,0,0,15900,67);
+datap(9,:)=proc_fid(data(9,:),100000,32768,0,60,-38,0,0,15900,67);
+datap(10,:)=proc_fid(data(10,:),100000,32768,0,60,-38,0,0,15900,67);
+datap(11,:)=proc_fid(data(11,:),100000,32768,0,210,-38,0,0,15900,67);
+datap(12,:)=proc_fid(data(12,:),100000,32768,0,206,-38,0,0,15900,67);
+datap(13,:)=proc_fid(data(13,:),100000,32768,0,210,-38,0,0,15900,67);
+datap(14,:)=proc_fid(data(14,:),100000,32768,0,210,-38,0,0,15900,67);
 
 xax=((0:32767)/32768-0.5)*100;
 plot(xax,real(datap))
@@ -147,9 +150,9 @@ xaxp=xax(range);
 datapx(1,:)=datap(1,range+819); % shift experiment to match with the others
 datapx(2,:)=datap(2,range+819); % shift experiment to match with the others
 datapx(3,:)=datap(3,range+819); % shift experiment to match with the others
-datapx(10,:)=datap(10,range-819); % shift experiment to match with the others
-datapx(11,:)=datap(11,range-130); % shift experiment to match with the others
-datapx(12,:)=datap(12,range-130); % shift experiment to match with the others
+datapx(10,:)=datap(10,range-30); % shift experiment to match with the others
+datapx(11,:)=datap(11,range-30); % shift experiment to match with the others
+%datapx(12,:)=datap(12,range-30); % shift experiment to match with the others
 
 plot(xaxp,datapx)
 
@@ -187,16 +190,20 @@ for k=1:14
 end
 
 for k=1:14
-    figure(100);
-    subplot(4,4,k)
+    subplot(7,2,k)
     plot(xax1,datapx1(k,:),xax1,datasx1(k,:))
     xlabel('\nu [kHz]')
     ylabel('intensity')
     legend('exp','fit')
     line = sprintf('k_{ex} = %5.1f s^{-1}',p(k,2));
+
+    % Write the results to the text file
+    fprintf(fileID, 'Spectrum: %f\n', k);
+    fprintf(fileID, 'k_{ex} = %5.1f s^{-1}',p(k,2));
+
     text(1,0.6,line)
-    axis([-5 5 -0.1 1.2])
-    axis square 
+    axis([-2 2 -0.1 1.2])
+
     switch k
         case 1
             title('S-TFLA 14 kHz')
@@ -228,7 +235,9 @@ for k=1:14
             title('rac-TFLA 60 kHz')
     end
 end
-orient('landscape')
 
-print -dpdf -fillpage output/figure_all_fits_cos2_apod.pdf
+% Close the text file
+fclose(fileID);
+
+print -dpdf -fillpage output/stacked_figure_all_fits_no_apod.pdf
 

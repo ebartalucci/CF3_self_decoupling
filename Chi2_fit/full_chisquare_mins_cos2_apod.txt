@@ -1,0 +1,70 @@
+Minimal Chi-square for TLA Spectrum 1:
+T2 Value: 0.013673
+k_ex Value: 724.489796
+Chi-square Value: 0.142164
+
+Minimal Chi-square for TLA Spectrum 2:
+T2 Value: 0.013673
+k_ex Value: 545.918367
+Chi-square Value: 0.211759
+
+Minimal Chi-square for TLA Spectrum 3:
+T2 Value: 0.015510
+k_ex Value: 333.673469
+Chi-square Value: 0.516026
+
+Minimal Chi-square for TLA Spectrum 4:
+T2 Value: 0.015510
+k_ex Value: 163.938776
+Chi-square Value: 0.681999
+
+Minimal Chi-square for TLA Spectrum 5:
+T2 Value: 0.019184
+k_ex Value: 82.469388
+Chi-square Value: 1.303527
+
+Minimal Chi-square for TLA Spectrum 6:
+T2 Value: 0.015510
+k_ex Value: 41.612245
+Chi-square Value: 1.084758
+
+Minimal Chi-square for TLA Spectrum 7:
+T2 Value: 0.013673
+k_ex Value: 29.428571
+Chi-square Value: 1.211543
+
+Minimal Chi-square for TLA Spectrum 8:
+T2 Value: 0.011837
+k_ex Value: 204.673469
+Chi-square Value: 0.253997
+
+Minimal Chi-square for TLA Spectrum 9:
+T2 Value: 0.011837
+k_ex Value: 113.020408
+Chi-square Value: 0.341674
+
+Minimal Chi-square for TLA Spectrum 10:
+T2 Value: 0.015510
+k_ex Value: 82.469388
+Chi-square Value: 0.458953
+
+Minimal Chi-square for TLA Spectrum 11:
+T2 Value: 0.015510
+k_ex Value: 49.734694
+Chi-square Value: 0.831734
+
+Minimal Chi-square for TLA Spectrum 12:
+T2 Value: 0.019184
+k_ex Value: 41.612245
+Chi-square Value: 0.782781
+
+Minimal Chi-square for TLA Spectrum 13:
+T2 Value: 0.017347
+k_ex Value: 3.020408
+Chi-square Value: 0.731608
+
+Minimal Chi-square for TLA Spectrum 14:
+T2 Value: 0.013673
+k_ex Value: 9.081633
+Chi-square Value: 0.275343
+

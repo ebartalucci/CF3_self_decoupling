@@ -1,11 +1,11 @@
 ##TITLE= Parameter file, TopSpin 3.6.2
 ##JCAMPDX= 5.0
 ##DATATYPE= Parameter Values
-##NPOINTS= 15	$$ modification sequence number
+##NPOINTS= 5	$$ modification sequence number
 ##ORIGIN= Bruker BioSpin GmbH
 ##OWNER= etba
-$$ 2023-11-22 11:18:31.439 +0100  etba@CZC007DNDL
-$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/13/acqu
+$$ 2023-11-22 07:07:42.318 +0100  etba@CZC007DNDL
+$$ /opt/nmrdata/etba/211123_1p3mm_TLA_rac_CF3_MAS_dependence_TWC_EB/801/acqu
 $$ process /opt/topspin3.6.2/prog/mod/shimcntl
 ##$ACQT0= 0
 ##$AMP= (0..31)
@@ -148,7 +148,7 @@ $$ process /opt/topspin3.6.2/prog/mod/shimcntl
 ##$NC= 0
 ##$NLOGCH= 3
 ##$NOVFLW= 0
-##$NS= 768
+##$NS= 5120
 ##$NUC1= <13C>
 ##$NUC2= <1H>
 ##$NUC3= <off>
@@ -200,9 +200,9 @@ $$ process /opt/topspin3.6.2/prog/mod/shimcntl
 ##$PLSTEP= 0.1
 ##$PLSTRT= -6
 ##$PLW= (0..63)
-0 7 10 0 0 0 0 0 0 0.000136 40 25 8.1 0 0 0 0 0 34 0.80473 0 0 0 0 0 0
-0 0.57345 0 5.44 0 0 5.44e-06 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
+0 4 10 0 0 0 0 0 0 0.000136 25.6 25 8.1 0 0 0 0 0 34 0.80473 0 0 0 0 0
+0 0 0.57345 0 5.44 0 0 5.44e-06 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0
 ##$PLWMAX= (0..7)
 0 0 0 0 0 0 0 0
 ##$PQPHASE= 0

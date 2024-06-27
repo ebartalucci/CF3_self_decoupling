@@ -1,12 +1,12 @@
-##TITLE= Parameter file, TopSpin 3.6.2
+##TITLE= Parameter file, TopSpin 4.1.3
 ##JCAMPDX= 5.0
 ##DATATYPE= Parameter Values
-##NPOINTS= 5	$$ modification sequence number
+##NPOINTS= 8	$$ modification sequence number
 ##ORIGIN= Bruker BioSpin GmbH
 ##OWNER= etba
-$$ 2023-10-13 09:52:30.319 +0200  etba@CZC007DNDL
-$$ /opt/nmrdata/etba/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/15/pdata/1/proc
-$$ process /opt/topspin3.6.2/prog/mod/dataserver
+$$ 2024-06-20 12:30:21.605 +0200  Ettore Bartalucci@Wiegand3
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/121023_1p3mm_TLa_S_CF3_variable_MAS_TWC_EB/15/pdata/1/proc
+$$ process C:\Bruker\TopSpin4.1.3\prog\mod\dataserver.exe
 ##$ABSF1= 42.08896
 ##$ABSF2= 26.16055
 ##$ABSG= 5
@@ -106,11 +106,11 @@ $$ process /opt/topspin3.6.2/prog/mod/dataserver
 ##$RDPOS= 0
 ##$REVERSE= no
 ##$SF= 700.26
-##$SI= 131072
+##$SI= 8192
 ##$SIGF1= 0
 ##$SIGF2= 0
 ##$SINO= 400
-##$SIOLD= 131072
+##$SIOLD= 8192
 ##$SPECTYP= <>
 ##$SREF_mod= 1
 ##$SREGLST= <1H.DMSO>
