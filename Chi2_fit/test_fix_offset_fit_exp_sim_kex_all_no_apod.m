@@ -192,10 +192,39 @@ end
 
 for k=1:14
     subplot(7,2,k)
-    plot(xax1,datapx1(k,:),xax1,datasx1(k,:))
+    switch k
+        case 1
+            offset = 0.25;
+        case 2
+            offset = 0.25;
+        case 3
+            offset = 0.24;
+        case 4
+            offset = 0.26;
+        case 5
+            offset = 0.25;
+        case 6
+            offset = 0.25;
+        case 7
+            offset = 0.25;
+        case 8
+            offset = 0.25;
+        case 9
+            offset = 0.25;
+        case 10
+            offset = 0.15;
+        case 11
+            offset = -0.20;
+        case 12
+            offset = -0.10;
+        case 13
+            offset = -0.10;
+        case 14
+            offset = -0.10;
+    end
+    plot(xax1+offset,datapx1(k,:),xax1+offset,datasx1(k,:))
     xlabel('\nu [kHz]')
     ylabel('intensity')
-    legend('exp','fit')
     line = sprintf('k_{ex} = %5.1f s^{-1}',p(k,2));
     line2 = sprintf('T_2 = %5.1f s',p(k,3));
 
@@ -205,10 +234,10 @@ for k=1:14
 
     text(1,0.6,line)
     axis([-2 2 -0.1 1.2])
-
     switch k
         case 1
             title('S-TFLA 14 kHz')
+            legend('exp','fit')
         case 2
             title('S-TFLA 17.5 kHz')
         case 3
@@ -236,10 +265,11 @@ for k=1:14
         case 14
             title('rac-TFLA 60 kHz')
     end
+
 end
 
 % Close the text file
 fclose(fileID);
-disp(line2)
-print -dpdf -fillpage output/stacked_figure_all_fits_no_apod.pdf
+
+print -dpdf -fillpage output/centered_stacked_figure_all_fits_no_apod.pdf
 
