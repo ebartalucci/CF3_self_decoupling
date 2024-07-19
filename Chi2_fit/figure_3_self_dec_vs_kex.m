@@ -93,29 +93,29 @@ for k = 1:length(k_ex_values)
     ylim([-0.05, 1.1])
     switch k
         case 1
-            title('k_{ex} = 1 s^{-1}')
+            title('{\it k}_{ex} = 1 s^{-1}')
         case 2
-            title('k_{ex} = 100 s^{-1}')
+            title('{\it k}_{ex} = 100 s^{-1}')
         case 3
-            title('k_{ex} = 200 s^{-1}')
+            title('{\it k}_{ex} = 200 s^{-1}')
         case 4
-            title('k_{ex} = 300 s^{-1}')
+            title('{\it k}_{ex} = 300 s^{-1}')
         case 5
-            title('k_{ex} = 500 s^{-1}')
+            title('{\it k}_{ex} = 500 s^{-1}')
         case 6
-            title('k_{ex} = 750 s^{-1}')
+            title('{\it k}_{ex} = 750 s^{-1}')
         case 7
-            title('k_{ex} = 1000 s^{-1}')
+            title('{\it k}_{ex} = 1000 s^{-1}')
         case 8
-            title('k_{ex} = 1500 s^{-1}')
+            title('{\it k}_{ex} = 1500 s^{-1}')
         case 9
-            title('k_{ex} = 2000 s^{-1}')
+            title('{\it k}_{ex} = 2000 s^{-1}')
         case 10
-            title('k_{ex} = 3000 s^{-1}')
+            title('{\it k}_{ex} = 3000 s^{-1}')
         case 11
-            title('k_{ex} = 5000 s^{-1}')
+            title('{\it k}_{ex} = 5000 s^{-1}')
         case 12
-            title('k_{ex} = 7500 s^{-1}')
+            title('{\it k}_{ex} = 7500 s^{-1}')
     end
-    xlabel('\nu [kHz]')
+    xlabel('\nu / Hz')
 end

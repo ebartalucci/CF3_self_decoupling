@@ -1,0 +1,39 @@
+spinsys {
+   channels 13C 1H
+   nuclei 13C 1H
+   dipole 1 2 -1500 0 0 0
+}
+
+par {
+   crystal_file     alpha0beta0
+   variable rfC     50000
+   variable rfH     50000
+   variable tsw     5
+   variable index   2
+
+   sw               1e6/tsw
+   np               512
+   proton_frequency 400e6
+   start_operator   I2x
+   detect_operator  I1x
+   method           direct
+   gamma_angles     1
+   spin_rate        0
+   verbose          1
+}
+
+proc pulseq {} {
+   global par
+  
+   acq_block {
+      pulse $par(tsw) $par(rfC) x $par(rfH) x
+   }
+}
+
+proc main {} {
+   global par
+  
+   set f [fsimpson]
+   fsave $f $par(name).csdf
+}
+
