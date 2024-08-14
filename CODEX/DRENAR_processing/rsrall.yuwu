@@ -1,0 +1,15 @@
+/* */
+
+int nfid;
+
+// FETCHPAR("L 31", &nfid);
+GETINT("Please enter the number of valid data points", nfid)
+	
+i1 = 1;
+TIMES(nfid)
+	RSR(2*i1-1, 200+i1)
+	RSR(2*i1, 400+i1)
+	i1 = i1 + 1;
+END
+
+QUIT
