@@ -19,7 +19,7 @@ for m=1:length(nurexp)  % loop over MAS or field in case multiple fields/MAS hav
     count=count+1;
 
 % Extraction of raw data from Topspin output file
-file=sprintf('static_t2_rac_TLA.txt',nurexp(m))
+file=sprintf('static_t2_rac_TLA_new.txt',nurexp(m))
 
 a=load(file)
 Ipeaks=find(a(:,1)==1)
@@ -37,7 +37,7 @@ end
 x0=[ydata(1), 5e-5];   % Rmk: x0(2) start parameter for T1 relaxation time (in s)
 
        % Functional form of T1 build-up (change in case of T2/T1rho fit into
-     fun = @(x,xdata)x(1)*exp(-1/(1*x(2))*xdata)
+    fun = @(x,xdata)x(1)*exp(-1/(1*x(2))*xdata)
     %fun = @(x,xdata)x(1)*(1-exp(-1/(1*x(2))*xdata));
  
     xfit = lsqcurvefit(fun,x0,xdata,ydata)
@@ -63,7 +63,7 @@ x0=[ydata(1), 5e-5];   % Rmk: x0(2) start parameter for T1 relaxation time (in s
    if n==1
    plot(xdata,ydata/max(ydata),'ro')
    hold on
-   plot(xdata_fit2,fit2{n,m}/max(fit2{n,m}),'--k'),
+   plot(xdata_fit2,fit2{n,m}/max(fit2{n,m}),'k'),
    xlim([0 max(xdata)+1])
    ylim([0 1])
    else
