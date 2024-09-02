@@ -21,13 +21,13 @@ linfit_kex_no_apod_rac = polyval(polyfit(inv_mas_rates, kex_no_apod_tla_rac, 1),
 linfit_kex_no_apod_s = polyval(polyfit(inv_mas_rates, kex_no_apod_tla_s, 1), inv_mas_rates);
 
 % Plot the values as inverted MAS
-figure(1); hold on;
+figure(1); clf; hold on;
 
-plot(inv_mas_rates, kex_no_apod_tla_rac, '-d', 'MarkerSize',4, 'LineWidth', 2, 'MarkerFaceColor',...
-    '#A2142F', 'Color', '#A2142F')
+plot(inv_mas_rates, kex_no_apod_tla_rac, 'd', 'MarkerSize',6, 'LineWidth', 2, 'MarkerFaceColor',...
+    '#A2142F', 'Color', '#A2142F', 'LineStyle','none')
 
-plot(inv_mas_rates,kex_no_apod_tla_s, '-d', 'MarkerSize',4, 'LineWidth', 2, 'MarkerFaceColor',...
-     '#EDB120', 'Color', '#EDB120')
+plot(inv_mas_rates,kex_no_apod_tla_s, 'd', 'MarkerSize',6, 'LineWidth', 2, 'MarkerFaceColor',...
+     '#EDB120', 'Color', '#EDB120', 'LineStyle','none')
 
 plot(inv_mas_rates, linfit_kex_no_apod_rac, '--k', 'LineWidth', 1.2)
 
@@ -56,6 +56,58 @@ ylabel('k_{ex} [s^{-1}]')
 title('Variation of k_{ex} vs 1/\omega_{MAS}')
 
 legend('rac-TFLA','({\itS})-TFLA', 'Location', 'southwest')
+
+hold off;
+
+% Plot the values as inverted MAS
+figure(2); clf; hold on;
+
+% Plot data points
+plot(inv_mas_rates, kex_no_apod_tla_rac, 'd', 'MarkerSize', 6, 'LineWidth', 2, ...
+    'MarkerFaceColor', '#A2142F', 'Color', '#A2142F', 'LineStyle', 'none');
+
+plot(inv_mas_rates, kex_no_apod_tla_s, 'd', 'MarkerSize', 6, 'LineWidth', 2, ...
+    'MarkerFaceColor', '#EDB120', 'Color', '#EDB120', 'LineStyle', 'none');
+
+plot(inv_mas_rates, linfit_kex_no_apod_rac, '--k', 'LineWidth', 1.2);
+plot(inv_mas_rates, linfit_kex_no_apod_s, '--k', 'LineWidth', 1.2);
+
+% Adjust axes properties
+set(gca, 'YDir', 'reverse');
+ylim([-10 800]);
+
+xlabel('1/\omega_{MAS} [s]');
+ylabel('k_{ex} [s^{-1}]');
+
+legend('rac-TFLA', '({\itS})-TFLA', 'Location', 'southwest');
+
+% Add the secondary top x-axis
+ax1 = gca; % Current axes
+ax2 = axes('Position', ax1.Position, ...
+           'XAxisLocation', 'top', ...
+           'YAxisLocation', 'right', ...
+           'Color', 'none', ...
+           'XColor', 'k', ...
+           'YColor', 'none'); % Make y-axis invisible
+
+% Set custom ticks and labels on the top x-axis
+rev_mas_rates = [60 50 40 30 22 17.5 14]; % The custom MAS rates
+
+% Define the mapping from inv_mas_rates to rev_mas_rates
+[sorted_inv_mas_rates, sort_idx] = sort(inv_mas_rates); % Sort inv_mas_rates for consistent x-axis
+sorted_rev_mas_rates = rev_mas_rates(sort_idx); % Reorder rev_mas_rates accordingly
+% Use sorted inv_mas_rates for ticks and corresponding rev_mas_rates as labels
+set(ax2, 'XTick', sorted_inv_mas_rates, 'XTickLabel', sorted_rev_mas_rates);
+
+% Ensure the limits of ax2 match ax1
+set(ax2, 'XLim', get(ax1, 'XLim'));
+
+
+xlabel(ax2, 'MAS / kHz', 'Color', 'k');
+
+ax2.YTick = [];
+
+linkaxes([ax1, ax2], 'x');
 
 hold off;
 
