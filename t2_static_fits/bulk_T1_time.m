@@ -34,9 +34,9 @@ end
 
 % Initial parameters for non-linear fit (Intensity, T1) Set a reasonable 
 % value for T1. T1 should be close to our experimental values for good fitting
-x0=[ydata(1), 5e-5];   % Rmk: x0(2) start parameter for T1 relaxation time (in s)
+x0=[ydata(1), 4e-5];   % Rmk: x0(2) start parameter for T1 relaxation time (in s)
 
-       % Functional form of T1 build-up (change in case of T2/T1rho fit into
+    % Functional form of T1 build-up (change in case of T2/T1rho fit into
     fun = @(x,xdata)x(1)*exp(-1/(1*x(2))*xdata)
     %fun = @(x,xdata)x(1)*(1-exp(-1/(1*x(2))*xdata));
  
@@ -59,13 +59,14 @@ x0=[ydata(1), 5e-5];   % Rmk: x0(2) start parameter for T1 relaxation time (in s
    % Graphical representation of results (fit vs. raw data). Change number
    % of subplots(m,q,n) according to number of fitted resonances
    fig20=figure(20)
-   fig20.Position=[92 72 1280 714];
    if n==1
    plot(xdata,ydata/max(ydata),'ro')
    hold on
    plot(xdata_fit2,fit2{n,m}/max(fit2{n,m}),'k'),
    xlim([0 max(xdata)+1])
    ylim([0 1])
+   xlabel('Echo decay / ms')
+   ylabel('Intensity / a.u.')
    else
         subplot(5,2,n)
    plot(xdata,ydata/max(ydata),'o')
