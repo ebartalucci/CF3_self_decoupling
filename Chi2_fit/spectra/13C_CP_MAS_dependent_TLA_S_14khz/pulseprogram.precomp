@@ -1,0 +1,155 @@
+# 1 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+;cp
+;
+;TS3 / 03.06.2011
+;
+;basic cp experiment
+;written by HF 1.3.2001
+;changed by JOS 05/06/03
+;comments added by STE 4.4.2006 and HF 16.06.2010
+;checked by SEWE 03.06.2011
+;
+;Avance III version
+;parameters: 
+;p3 : proton 90 at power level PLW12
+;p15 : contact time at PLW1(f1) and SPW0(f2)
+;pl1 : X power level during contact
+;pl2 : = 1H 90deg power
+;pl12 : decoupling power level (if not PLW13)
+;pl13 : special decoupling power level
+;sp0 : proton power level during contact
+;cnst21 : on resonance, usually = 0
+;cpdprg2 : e.g. cw, spinal64 (at PLW12)
+;d1 : recycle delay
+;pcpd2 : pulse length in decoupling sequence (e.g. 180deg)
+;spnam0 : use e.g. ramp.100 or ramp90100.100 for variable amplitude CP
+;zgoptns : -Dfslg, -Dlacq, -Dlcp15, or blank
+;
+;
+;$CLASS=Solids
+;$DIM=1D
+;$TYPE=cross polarisation
+;$SUBTYPE=simple 1D
+;$COMMENT=basic cp experiment, arbitrary contact and decoupling schemes
+
+
+prosol relations=<solids_cp>
+# 1 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avancesolids.incl" 1
+;Avancesolids.incl
+;   for Avance Neo
+;
+;avance-version (20/12/14)
+;
+;$CLASS=Solids Incl
+;$COMMENT=
+
+
+# 1 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl" 1
+;Avance4.incl
+;   for AV 4
+;
+;avance-version (16/08/18)
+;
+;$CLASS=Common Incl
+;$COMMENT=
+
+
+# 19 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+;setrtp0 denotes TimingController
+
+
+# 50 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+# 51 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+
+
+# 63 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+# 89 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+# 90 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+
+
+# 123 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+;#define LOWQ
+;#define HIGHQ
+
+
+;#define MIX_UP
+;#define MIX_DOWN
+# 136 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avance.incl"
+;$Id:$
+# 11 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avancesolids.incl" 2
+
+
+# 33 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/Avancesolids.incl"
+;$Id:$
+# 38 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi" 2
+
+# 47 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+
+"acqt0=0" ;defines t=0 for baseopt
+# 50 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+# 50 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+1 ze
+
+2 d1 do:f2
+	
+
+# 1 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/p15_prot.incl" 1
+;p15_prot.incl
+;avance-version (13/01/29)
+;Test the rf on-time and duty cycle
+;protect against too long contact time
+;Test the rf on-time and duty cycle 
+;
+;$CLASS=Solids INCL
+;$COMMENT=protect against too long contact time
+
+
+1m
+if "p15 < 10.1m" goto Passp15
+2u
+print "contact time exceeds 10msec limit!"
+goto HaltAcqu
+Passp15, 1m
+# 20 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/p15_prot.incl"
+;$Id:$
+# 56 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi" 2
+			;make sure p15 does not exceed 10 msec 
+			;let supervisor change this pulseprogram if 
+			;more is needed
+# 70 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+# 1 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/trigg.incl" 1
+;trigg.incl
+;version (16/09/08)
+;
+;$COMMENT=definition of external trigger output, conn I pin 1
+;$CLASS=Solids INCL
+
+
+# 13 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/trigg.incl"
+;$Id:$
+# 70 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi" 2
+
+  1u fq=cnst1:f1 6u setrtp0|6 \n              4u setrtp0^6
+  (p2 pl2 ph1):f2
+  (p15 pl1 ph2):f1 (p15:sp0 ph10):f2
+;	1u
+;	(p1 pl11 ph3):f1
+  1u pl12:f2 
+	1u cpds2:f2 		;pl12 is used here with tppm, spinal, pl13 with cwlg, cwlgs
+  go=2 ph31 finally do:f2
+  1m do:f2
+  wr #0
+HaltAcqu, 1m
+exit
+
+ph0= 0
+ph1= 1 3
+ph2= 0 0 2 2 1 1 3 3
+ph3= 1 1 3 3 2 2 0 0
+ph10= 0
+ph31= 0 2 2 0 1 3 3 1
+# 91 "/root/.topspin-BladeEpu/local_acqu/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/lists/pp/cpneo2.towi"
+;$id: $

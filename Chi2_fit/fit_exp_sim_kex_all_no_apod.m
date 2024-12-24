@@ -3,7 +3,7 @@
 % Author: Ettore Bartalucci, RWTH Aachen
 % Scripts for Bloch-McConnel from Matthias Ernst, ETH Zurich
 % Use cos^2 apodization function in processing 
-% Last update: Aachen, 17.06.24
+% Last update: Aachen, 15.10.24
 % Project: CF3 self decoupling
 
 clear all;

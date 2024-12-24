@@ -16,15 +16,18 @@
 
 # Units of M2 are [x10^6 rad^2/s^2]
 
-# The distances are calculated from one representative 19F atom of the CF3 group, F1, and compared between racemic and optical pure
+# The distances are calculated from one representative 1H or 19F atom of the CH3/CF3 group, 
+# and compared between racemic (published) and optical pure (refined, Fabio Manzoni)
 
 # Extract distances:
-# Homonuclear 19F-19F distances are extracted from the respective crystal structures using
-# Mercury and setting a cutoff to 10 Angstroms.
+# Homonuclear distances are extracted from the respective crystal structures using
+# Diamond and setting a cutoff to 10 Angstroms.
 # All homonuclear distances have been included for the F1 atom for both inter and intramolecular contacts
 # Files are:
-# - distances_racemic_TLa.csv is the racemic file
-# - distances_optical_pure_TLa.csv is the optical pure file
+# - 1H_rac_TFLA_published.csv -> manually removed the first two OH protons which i dont need
+# - 19F_rac_TFLA_published.csv 
+# - 1H_S_TFLA_new_refined.csv -> manually removed the first two OH protons which i dont need
+# - 19F_S_TFLA_new_refined.csv 
 
 # Working with this script:
 # STEP 1: convert .csv to .txt by prompting the path of the file to convert. Text file is written in the same folder
@@ -75,10 +78,12 @@ def read_distances(distance_txt_file):
         for line in distances:
 
             # Only take homonuclear distances for F1
-            if line.startswith('F2'):
+            #if line.startswith('F2'):
+                #break
+            if line.startswith('H2B'):
                 break
 
-            # Extract only if not F2 encountered
+            # Extract only if not H2B or F2 encountered
             else:
                 # Split line into columns
                 columns = line.split()
@@ -136,15 +141,16 @@ def write_van_vleck(second_moment, txt_file):
 def main():
     # STEP 1
     # input file
-    input_csv = input("Enter the path to the input CSV file: ")
+    #input_csv = input("Enter the path to the input CSV file: ")
     
     # Use the same name as the input CSV file for the output text file
-    input_name = os.path.splitext(os.path.basename(input_csv))[0]
+    #input_name = os.path.splitext(os.path.basename(input_csv))[0]
+    input_name = 'F3_S_TFLA_refined_new'
     output_text = os.path.join(os.getcwd(), f'van_vleck_M2/{input_name}.txt')
     
     # Run csv to text file conversion
-    convert_csv_to_txt(input_csv, output_text)
-    print(f"Conversion complete. CSV file '{input_csv}' converted to text file '{output_text}'.")
+    #convert_csv_to_txt(input_csv, output_text)
+    #print(f"Conversion complete. CSV file '{input_csv}' converted to text file '{output_text}'.")
 
     # STEP 2
     # Distance extraction from file
@@ -169,7 +175,7 @@ def main():
     except ValueError as error:
         print(f"Error: {error}")
 
-    store_M2 = os.path.join(os.getcwd(), 'van_vleck_M2/M2_values.txt')
+    store_M2 = os.path.join(os.getcwd(), 'van_vleck_M2/M2_F3_S_TFLA_refined_new.txt')
     write_van_vleck(second_moment, store_M2)
 
 if __name__ == "__main__":

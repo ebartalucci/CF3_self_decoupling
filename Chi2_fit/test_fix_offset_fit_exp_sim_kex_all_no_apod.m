@@ -2,7 +2,7 @@
 % Include all 14 spectra with increasing MAS
 % Author: Ettore Bartalucci, RWTH Aachen
 % Scripts for Bloch-McConnel from Matthias Ernst, ETH Zurich
-% Use cos^2 apodization function in processing 
+% Use no apodization function in processing 
 % Last update: Aachen, 17.06.24
 % Project: CF3 self decoupling
 % Test> fixing offset between the various experiments
@@ -20,19 +20,19 @@ td=3072;
 % S-TFLA
 name= 'spectra/13C_CP_MAS_dependent_TLA_S_14khz/fid';
 fid = fopen(name,'r','l');
-spectrum_cf3_tla_s_14khz = fread(fid,td,'int');
+spectrum_cf3_tla_s_14khz = fread(fid,td,'float64');
 fclose(fid);
 spectrum_cf3_tla_s_14khz=spectrum_cf3_tla_s_14khz(1:2:end)+1i*spectrum_cf3_tla_s_14khz(2:2:end);
 
 name= 'spectra/13C_CP_MAS_dependent_TLA_S_17p5khz/fid';
 fid = fopen(name,'r','l');
-spectrum_cf3_tla_s_17p5khz = fread(fid,td,'int');
+spectrum_cf3_tla_s_17p5khz = fread(fid,td,'float64');
 fclose(fid);
 spectrum_cf3_tla_s_17p5khz=spectrum_cf3_tla_s_17p5khz(1:2:end)+1i*spectrum_cf3_tla_s_17p5khz(2:2:end);
 
 name= 'spectra/13C_CP_MAS_dependent_TLA_S_22khz/fid';
-fid = fopen(name,'r','l');
-spectrum_cf3_tla_s_22khz = fread(fid,td,'int');
+fid = fopen(name,'r','l'); %use l (little endian) for Avance, b (big endian) for NEO
+spectrum_cf3_tla_s_22khz = fread(fid,td,'float64');
 fclose(fid);
 spectrum_cf3_tla_s_22khz=spectrum_cf3_tla_s_22khz(1:2:end)+1i*spectrum_cf3_tla_s_22khz(2:2:end);
 
@@ -123,9 +123,9 @@ data(14,:)=spectrum_cf3_tla_rac_60khz;
 
 datap=zeros(14,32768);
 % S-TFLA
-datap(1,:)=proc_fid(data(1,:),100000,32768,0,66,-38,0,0,15900,67);
-datap(2,:)=proc_fid(data(2,:),100000,32768,0,78,-38,0,0,15900,67);
-datap(3,:)=proc_fid(data(3,:),100000,32768,0,64,-38,0,0,15900,67);
+datap(1,:)=proc_fid(data(1,:),100000,32768,0,118,-40,0,0,15900,67);
+datap(2,:)=proc_fid(data(2,:),100000,32768,0,118,-38,0,0,15900,67);
+datap(3,:)=proc_fid(data(3,:),100000,32768,0,118,-38,0,0,15900,67);
 datap(4,:)=proc_fid(data(4,:),100000,32768,0,210,-38,0,0,15900,67);
 datap(5,:)=proc_fid(data(5,:),100000,32768,0,210,-38,0,0,15900,67);
 datap(6,:)=proc_fid(data(6,:),100000,32768,0,210,-38,0,0,15900,67);
@@ -141,6 +141,7 @@ datap(13,:)=proc_fid(data(13,:),100000,32768,0,210,-38,0,0,15900,67);
 datap(14,:)=proc_fid(data(14,:),100000,32768,0,210,-38,0,0,15900,67);
 
 xax=((0:32767)/32768-0.5)*100;
+figure(9);
 plot(xax,real(datap))
 
 range = 16385:19334;
@@ -148,9 +149,9 @@ datapx= datap(:,range);
 xaxp=xax(range);
 
 % shift spectra
-datapx(1,:)=datap(1,range+819); % shift experiment to match with the others
-datapx(2,:)=datap(2,range+819); % shift experiment to match with the others
-datapx(3,:)=datap(3,range+819); % shift experiment to match with the others
+datapx(1,:)=datap(1,range); % shift experiment to match with the others
+datapx(2,:)=datap(2,range); % shift experiment to match with the others
+datapx(3,:)=datap(3,range); % shift experiment to match with the others
 datapx(10,:)=datap(10,range-30); % shift experiment to match with the others
 datapx(11,:)=datap(11,range-30); % shift experiment to match with the others
 %datapx(12,:)=datap(12,range-30); % shift experiment to match with the others
@@ -194,11 +195,11 @@ for k=1:14
     subplot(7,2,k)
     switch k
         case 1
-            offset = 0.25;
+            offset = 0.35;
         case 2
-            offset = 0.25;
+            offset = 0.35;
         case 3
-            offset = 0.24;
+            offset = 0.35;
         case 4
             offset = 0.26;
         case 5

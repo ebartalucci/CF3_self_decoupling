@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<NMRFit>
+<FitParameters>
+	<timestamp>2024-10-31T10:30:58Z</timestamp>
+	<DMFitVersion>20230120</DMFitVersion>
+	<FitMode>0</FitMode>
+	<FitModeAsc>Fit 1D</FitModeAsc>
+	<Sdev>1.886881243</Sdev>
+	<ComputeParam>
+		<ShapeSize>4096</ShapeSize>
+		<npasab>64</npasab>
+		<ssbMax>10</ssbMax>
+		<QuadStep>5</QuadStep>
+		<EtaStep>5</EtaStep>
+		<CptThreshold>99</CptThreshold>
+		<CSAStep>15</CSAStep>
+		<MinCSAStep>50</MinCSAStep>
+		<GaussMult>0.75</GaussMult>
+		<SWMult>4</SWMult>
+	</ComputeParam>
+	<Dimension>F2
+		<nucleus></nucleus>
+		<frequency>470.6177761</frequency>
+		<line>
+			<ModelName>Gaus/Lor</ModelName>
+			<amp Fit="*"  Error="0.47783">99.28108613</amp>
+			<pos  Unit="ppm" Error="0.00899">-85.08632684</pos>
+			<wid Fit="*"  Unit="ppm" Error="0.03163">3.754558326</wid>
+			<gl>0</gl>
+			<T2>0.1801453037</T2>
+		</line>
+		<line>
+			<ModelName>Gaus/Lor</ModelName>
+			<amp Fit="*"  Error="0.17392">105.7484373</amp>
+			<pos  Unit="ppm" Error="0.03232">-90.80470348</pos>
+			<wid Fit="*"  Unit="ppm" Error="0.09063">55.80664298</wid>
+			<gl>0.5</gl>
+			<T2>0.01211981251</T2>
+		</line>
+	</Dimension>
+</FitParameters>
+<GraphParameters>
+	<Dimensions>
+		<X>
+			<min>60660.30686</min>
+			<max>-132759.9665</max>
+		</X>
+		<Amp>
+			<min>-11.35000567</min>
+			<max>211.0887511</max>
+		</Amp>
+	</Dimensions>
+</GraphParameters>
+<DataFile>
+	<FileName>1r</FileName>
+	<FileTitle>from:  Ettore Bartalucci  $$ 2024-09-20 16:02:18.952 +0200  Ettore Bartalucci@Wiegand3  $$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/130824_3p2mm_19F_TLA_Static_and_CODEX/101/pdata/101/procs  $$ process C:\Bruker\TopSpin4.1.3\prog\mod\proc1d.exe   D:\PhD\Publications\CF3_MAS_SD_Jcoupling\codes\CF3_self_decoupling\t2_static_fits\spectra_to_DMfit\s_TFLA\101\1r</FileTitle>
+</DataFile>
+</NMRFit>

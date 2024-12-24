@@ -1,0 +1,13 @@
+;trigg.incl
+;version (16/09/08)
+;
+;$COMMENT=definition of external trigger output, conn I pin 1
+;$CLASS=Solids INCL
+
+
+#define trigg 6u setrtp0|6 \n\
+              4u setrtp0^6
+
+
+
+;$Id:$

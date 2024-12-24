@@ -9,9 +9,9 @@ kex_cos2_apod_tla_rac = [209 114.4 72.9 34.1 19.8 0 0];
 kex_cos2_apod_tla_s = [716.5 534.5 354.2 190.2 85.6 12.9 4.4];
 
 kex_no_apod_tla_rac = [188.6 102.5 72.2 48.8 34.5 0 0];
-kex_no_apod_tla_s = [766.4 544.9 330.9 155.8 88.9 29.5 17.3];
+kex_no_apod_tla_s = [675.1 537.6 302.8 155.8 88.9 29.5 17.3];
 
-mas_rates = [14 17.5 22 30 40 50 60];
+mas_rates = [14000 17500 22000 30000 40000 50000 60000];
 
 %% Plots
 inv_mas_rates = 1./ mas_rates;
@@ -76,8 +76,9 @@ plot(inv_mas_rates, linfit_kex_no_apod_s, '--k', 'LineWidth', 1.2);
 set(gca, 'YDir', 'reverse');
 ylim([-10 800]);
 
-xlabel('1/\omega_{MAS} [s]');
-ylabel('k_{ex} [s^{-1}]');
+xlabel('\nu_{MAS}^{-1} / s');
+ylabel('k_{ex} / s^{-1}');
+set(gca,'TickDir','out'); % The only other option is 'in'
 
 legend('rac-TFLA', '({\itS})-TFLA', 'Location', 'southwest');
 

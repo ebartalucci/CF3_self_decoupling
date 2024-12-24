@@ -1,0 +1,27 @@
+##TITLE= Parameter file, TopSpin 4.4.0
+##JCAMPDX= 5.0
+##DATATYPE= Parameter Values
+##NPOINTS= 1	$$ modification sequence number
+##ORIGIN= Bruker BioSpin GmbH & Co. KG
+##OWNER= etba
+$$ 2024-10-12 11:53:14.130 +0200  etba@neo700.itmc.rwth-aachen.de
+$$ /opt/nmrdata/etba/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/pdata/1/clevels
+$$ process /opt/topspin4.4.0/prog/mod/edparproc
+##$LEVELS= (0..255)
+33844.86 -33844.86 59301.78 -59301.78 103906.5 -103906.5 182061.32 -182061.32
+319001.47 -319001.47 558943.19 -558943.19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0
+##$LEVSIGN= 3
+##$MAXLEV= 6
+##$METHOD= 0
+##$NEGBASE= -33844.86
+##$NEGINCR= 1.8
+##$POSBASE= 33844.86
+##$POSINCR= 1.8
+##END=

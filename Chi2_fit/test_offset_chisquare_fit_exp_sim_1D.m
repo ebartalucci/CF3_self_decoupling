@@ -121,7 +121,7 @@ spectra = {spectrum_cf3_tla_s_14khz, spectrum_cf3_tla_s_17p5khz, spectrum_cf3_tl
 
 %% Variables section
 % Bloch-McConnell variables
-k_ex = 100; % extracted from chisquare fit in order: 286,286, 184, 184, 286, 184
+k_ex = 200; % extracted from chisquare fit in order: 286,286, 184, 184, 286, 184
 T_2 = 0.01; % extracted from chisquare fit in order: 0.01 for all
 J_cf = 280; % from experimental values (@Igor)
 
@@ -130,7 +130,7 @@ t = linspace(0, 0.1, 8192); % time domain size (s) need to match experiment
 DW = 5e-6; % dwell time
 SW = 1/(2*DW); % spectral width (Hz)
 sfrq = 700; % spectrometer freq (MHz)
-offset = 9200; %offset (Hz) to align simulations and experiments ogni 100 scala di 2
+offset = 8500; %offset (Hz) to align simulations and experiments ogni 100 scala di 2
 NP = length(zeros(size(t))); % Length of the signal
 f = linspace(-SW, SW, NP); % Frequency axis
 f2 = linspace(-SW+offset, SW+offset, NP);
@@ -207,7 +207,7 @@ shifted_spectrum = interp1(f, normalized_spectrum, f2, 'linear', 0);
 figure(1); clf; hold on; 
 plot(shifted_spectrum)
 plot(normalized_spectrum)
-plot(spectrum_cf3_tla_rac_60khz)
+plot(spectrum_cf3_tla_s_30khz)
 xlabel('Hz')
 legend('Simulated - offset', 'Simulated - original', 'Experimental')
 

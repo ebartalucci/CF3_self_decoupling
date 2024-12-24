@@ -1,7 +1,7 @@
 % Adding minima of the resulting simulations to the 
 % 2D chisquare plot
 
-fig = openfig('output\final_chisquare_14_spectra.fig');
+fig = openfig('output\new_final_chisquare_all_spectra_paper.fig');
 
 fig_axes = findobj(fig, 'type', 'axes');
 selected_ax_idx =2;
@@ -14,38 +14,38 @@ for i = 1:k
     switch i
 
         case 1
-            k_ex_chisquare = 724.489796;
-            k_ex_fit = 766.4;
-            t_2_chisquare = 0.013673;
-            t_2_fit = 0.0102;
+            k_ex_chisquare = 634.6939;
+            k_ex_fit = 675.1;
+            t_2_chisquare = 0.039388;
+            t_2_fit = 0.0106;
             subplot(4,4,1);
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
             legend('\chi^2', '1D fit', 'Location','best')
-            title('S-TFLA 14 kHz')
+            title('(S)-TFLA 14 kHz')
             hold 'off';
         case 2
-            k_ex_chisquare = 545.918367;
-            k_ex_fit = 544.9;
-            t_2_chisquare =  0.013673;
-            t_2_fit = 0.0113;
+            k_ex_chisquare = 494.898;
+            k_ex_fit = 537.6;
+            t_2_chisquare =  0.030204;
+            t_2_fit = 0.0104;
             subplot(4,4,2);
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
-            title('S-TFLA 17.5 kHz')
+            title('(S)-TFLA 17.5 kHz')
             hold 'off';
         case 3
-            k_ex_chisquare = 333.673469;
-            k_ex_fit = 330.9;
-            t_2_chisquare = 0.015510;
-            t_2_fit = 0.0144;
+            k_ex_chisquare = 343.8776;
+            k_ex_fit = 302.8;
+            t_2_chisquare = 0.019184;
+            t_2_fit = 0.0128;
             subplot(4,4,3);
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
-            title('S-TFLA 22 kHz')
+            title('(S)-TFLA 22 kHz')
             hold 'off';
         case 4
             k_ex_chisquare = 163.938776;
@@ -56,7 +56,7 @@ for i = 1:k
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
-            title('S-TFLA 30 kHz')
+            title('(S)-TFLA 30 kHz')
             hold 'off';
         case 5
             k_ex_chisquare = 82.469388;
@@ -67,7 +67,7 @@ for i = 1:k
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
-            title('S-TFLA 40 kHz')
+            title('(S)-TFLA 40 kHz')
             hold 'off';
         case 6
             k_ex_chisquare = 41.612245;
@@ -78,7 +78,7 @@ for i = 1:k
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
-            title('S-TFLA 50 kHz')
+            title('(S)-TFLA 50 kHz')
             hold 'off';
         case 7
             k_ex_chisquare = 29.428571;
@@ -89,7 +89,7 @@ for i = 1:k
             hold 'on';
             plot(t_2_chisquare, k_ex_chisquare,'rd', 'MarkerFaceColor','r')
             plot(t_2_fit, k_ex_fit,'yd', 'MarkerFaceColor','y')
-            title('S-TFLA 60 kHz')
+            title('(S)-TFLA 60 kHz')
             hold 'off';
         case 8
             k_ex_chisquare = 204.673469;
@@ -173,5 +173,5 @@ for i = 1:k
 end
 orient('landscape')
 
-print -dpdf -fillpage output/final_chisquare_all_spectra.pdf
+print -dpdf -fillpage output/new_final_chisquare_all_spectra_paper.pdf
 

@@ -1,7 +1,7 @@
 Spectrum: 1.000000
-k_{ex} = 766.4 s^{-1}Spectrum: 2.000000
-k_{ex} = 544.9 s^{-1}Spectrum: 3.000000
-k_{ex} = 330.9 s^{-1}Spectrum: 4.000000
+k_{ex} = 675.1 s^{-1}Spectrum: 2.000000
+k_{ex} = 537.6 s^{-1}Spectrum: 3.000000
+k_{ex} = 302.8 s^{-1}Spectrum: 4.000000
 k_{ex} = 155.8 s^{-1}Spectrum: 5.000000
 k_{ex} =  88.9 s^{-1}Spectrum: 6.000000
 k_{ex} =  29.5 s^{-1}Spectrum: 7.000000

@@ -1,0 +1,33 @@
+##TITLE= Audit trail, TopSpin 4.1.3
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= Ettore Bartalucci
+$$ D:/PhD/Data/NMR/ETBA/Bolm/CF3_coupling/130824_3p2mm_19F_TLA_Static_and_CODEX/11/pdata/102/auditp.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2024-08-13 11:27:27.107 +0200>,<etba>,<AVIII500>,<go4>,<TopSpin 3.6.5>,
+      <created by zg on data set with UUID 'be016b5c-5951-11ef-8b1d-a0369fc3dc9c'
+       started at 2024-08-13 10:55:08.708 +0200,
+       POWCHK disabled, PULCHK disabled,
+       completed at 2024-08-13 11:27:27.105 +0200
+
+       configuration hash MD5:
+       91 5A 6E 7B 09 26 80 D6 52 9E 24 A0 4C 03 13 F4
+       data hash MD5: 16K * 20
+       BF 45 07 A5 E8 67 6E 50 1B E4 B1 FB C1 FB 60 79>)
+(   2,<2024-09-20 15:51:42.163 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <Start of raw data processing
+       fp 2 FT_mod = 6 PKNL = 1 PHC0 = 293.4182 PHC1 = -302.5465 SI = 16K 
+       data hash MD5: 16K
+       EE EA 8D 34 8F 2C 9A 1F BC 85 A5 44 01 3A 20 38>)
+(   3,<2024-09-20 16:01:21.084 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <apk 
+       data hash MD5: 16K
+       72 A9 BE E8 B1 91 A8 91 35 AE 6C 42 9F 70 CB 52>)
+(   4,<2024-09-20 16:01:21.523 +0200>,<Ettore Bartalucci>,<Wiegand3>,<proc1d>,<TopSpin 4.1.3>,
+      <abs ABSG = 5 
+       data hash MD5: 16K
+       00 78 24 AB 7C 0B 45 FD DA C3 6C 62 2F 7B 2D 2C>)
+##END=
+
+$$ hash MD5
+$$ F5 F3 F6 56 B5 5B 4B 9F 2E 1C 84 44 2F 4F 1A 52

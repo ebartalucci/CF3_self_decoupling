@@ -3,8 +3,10 @@
 % Author: Ettore Bartalucci, RWTH Aachen
 % Scripts for Bloch-McConnel from Matthias Ernst, ETH Zurich
 % Support and debug with Chatgpt
-% First draft: Aachen, 18.06.24
+% First draft: Aachen, 16.10.24
 % Project: CF3 self decoupling
+% Remember: AvanceIII -> int
+%           NeoConsole -> Float64
 
 clear all;
 tic;
@@ -132,7 +134,7 @@ t_values = {linspace(0, 8191*1e-5, 8192), linspace(0, 8191*1e-5, 8192), ...
             linspace(0, 8191*1e-5, 8192), linspace(0, 8191*1e-5, 8192)};
 
 % Printing file
-fileID = fopen('full_chisquare_mins_cos2_apod.txt','w');
+fileID = fopen('full_chisquare_mins_cos2_apod_finaldata.txt','w');
 
 % Loop over each TLA spectrum
 for t_index = 1:length(t_values)
@@ -143,21 +145,21 @@ for t_index = 1:length(t_values)
     switch t_index
         case 1
             current_spectrum = spectrum_cf3_tla_s_14khz;
-            k_ex_values = linspace(500, 1000, 50);
+            k_ex_values = linspace(400, 900, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 13500/2; % divide by half because we dont know what we r doing, hopefully works
+            offset = 8250/2; % divide by half because we dont know what we r doing, hopefully works
             title('S-TFLA 14 kHz')
         case 2
             current_spectrum = spectrum_cf3_tla_s_17p5khz;
             k_ex_values = linspace(250, 750, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 13500/2; 
+            offset = 8250/2; 
             title('S-TFLA 17.5 kHz')
         case 3
             current_spectrum = spectrum_cf3_tla_s_22khz;
             k_ex_values = linspace(150, 650, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 13500/2; 
+            offset = 8250/2; 
             title('S-TFLA 22 kHz')
         case 4
             k_ex_values = linspace(1, 500, 50);

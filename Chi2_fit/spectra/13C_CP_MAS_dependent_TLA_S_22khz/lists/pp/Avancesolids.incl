@@ -1,0 +1,33 @@
+;Avancesolids.incl
+;   for Avance Neo
+;
+;avance-version (20/12/14)
+;
+;$CLASS=Solids Incl
+;$COMMENT=
+
+
+#include <Avance.incl>
+
+
+/*;for compatibilty with older (AV III, TS 3) Avancesolids.incl*/
+
+/*;gating pulse for RX, ADC and HPPR auto mode*/
+/*;obsolete, use REC_UNBLK instead of RG_ON and REC_BLK instead of RG_OFF*/
+#define RG_ON  setrtp1|26
+#define RG_OFF  setrtp1^26
+
+/*;to start the acquisition with receiver phase ph31 and reference phase ph30*/
+/*; obsolete, use ACQ_START(ph30,ph31) instead, this is defined in Desolids.incl*/
+#define STARTADC   (1u adc ph31 syrec)
+#define RESETPHASE (1u ph30:r):f1
+
+/*;define data sampling for WAHUHA type experiments*/
+/*; samples for d9, closes receiver*/
+/*; obsolete*/
+#define sample d9 START_NEXT_SCAN  \n\
+               0.1u REC_BLK
+
+
+
+;$Id:$

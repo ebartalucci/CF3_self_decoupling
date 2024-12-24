@@ -1,0 +1,26 @@
+##TITLE= Audit trail, TopSpin 4.4.0
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH & Co. KG
+##OWNER= etba
+$$ /opt/nmrdata/etba/111024_32pmmHXY_S_TFLA_MAS_dependence_purch_and_BM_TWC_EB/211/pdata/1/auditp.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2024-10-12T11:53:14.138+0200>,<etba>,<neo700.itmc.rwth-aachen.de>,<cprserver>,<TopSpin 4.4.0>,
+      <new/edc PROCNO=1>)
+(   2,<2024-10-12T13:02:32.020+0200>,<etba>,<neo700.itmc.rwth-aachen.de>,<proc1d>,<TopSpin 4.4.0>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = 275.0543 PHC1 = -270.7792 SI = 64K 
+       data hash MD5: 64K
+       90 00 CA 36 E8 97 D9 20 CA 8A 19 8F AF F6 00 52>)
+(   3,<2024-10-12T13:02:33.929+0200>,<etba>,<neo700.itmc.rwth-aachen.de>,<proc1d>,<TopSpin 4.4.0>,
+      <apk 
+       data hash MD5: 64K
+       26 8C 9D 82 03 9D 75 CD 2E CD 07 89 7B 1D 34 04>)
+(   4,<2024-10-12T13:27:53.515+0200>,<etba>,<neo700.itmc.rwth-aachen.de>,<proc1d>,<TopSpin 4.4.0>,
+      <Start of raw data processing
+       fp FT_mod = 6 PKNL = 1 PHC0 = 263.7579 PHC1 = -270.6537 SI = 64K 
+       data hash MD5: 64K
+       64 FD 07 08 17 49 E9 BF CE DB DC 5C 56 E1 F8 EC>)
+##END=
+
+$$ hash MD5
+$$ C7 4A CD 63 17 DF EB 2E 3E 9C EF 2B E9 9F 80 A2

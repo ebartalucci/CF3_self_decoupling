@@ -1,6 +1,6 @@
 #*******************************************************************
 #
-# $Source: /sc/CvsTree/sc/gen/src/form/ased_acqu.form,v $
+# $Source:$
 #
 # Copyright (c) 1995 - 2008
 # BRUKER BioSpin GmbH
@@ -9,7 +9,7 @@
 # All Rights Reserved
 #
 #
-# $Id: ased_acqu.form,v 1.27.2.3 2014/05/05 13:10:49 nipo Exp $
+# $Id:$
 #*******************************************************************
 EDIT_PAR COMMAND FILE
 
@@ -26,21 +26,21 @@ END
 NAME		SW
 END
 T_NAME		SWH
-		TYPE	R32
+		TYPE	R64
 		CLASS	ACQU
 		SUBRANGE 0.0 1e38
 		REL	"SWH=SW*SFO1"
 		INV_REL "SW=SWH/SFO1"
 		UNIT	"Hz"
 		FORMAT	"%14.2f Hz"
-		TEXT	"sweep width"
+		TEXT	"sweep width in acquisition direction"
 END
 T_NAME          AQ
 		TYPE	R32
 		CLASS	ACQU
 		SUBRANGE 0.0 1e38
-		REL	"AQ=aqcalc(SW,SFO1,TD,DIGTYP)"
-		INV_REL	"TD=tdcalc(SW,SFO1,1.0e6*AQ,DIGTYP)"
+		REL	"AQ=aqcalc(SW,SFO1,TD,DIGTYP,FnMODE)"
+		INV_REL	"TD=tdcalc(SW,SFO1,1.0e6*AQ,DIGTYP,FnMODE)"
 		UNIT	"sec"
 		FORMAT	"%14.7f sec"
                 TEXT	"acquisition time"
@@ -59,6 +59,17 @@ T_NAME          DW
 END
 NAME		DE
 		FORMAT	"%14.2f usec"
+END
+T_NAME		GRPDLY
+		TYPE	R64
+		SUBRANGE 0 1e38
+		CLASS	ACQU
+		REL	"GRPDLY=GRPDLY"
+		INV_REL	"GRPDLY=GRPDLY"				
+		UNIT	"no"
+		TEXT	"group delay of digital filter"
+		FORMAT	"%14.0f"
+		NONEDIT
 END
 T_NAME		D1
 		TYPE	R32
@@ -118,13 +129,13 @@ T_NAME		P15
 		REL	"P15=P[15]"
 		INV_REL	"P[15]=P15"
 		UNIT	"usec"
-		FORMAT	"%14.3f usec"
+		FORMAT	"%14.4f usec"
 		TEXT		"contact time at PLW1(f1) and SPW0(f2)"
 END
 T_NAME		PLW1
 		TYPE	R32
 		CLASS	ACQU
-		SUBRANGE 0 386.2
+		SUBRANGE 0 342.15
 		REL	"PLW1=PLW[1]"
 		INV_REL	"PLW[1]=PLW1"
 		UNIT	"W"
@@ -134,7 +145,7 @@ END
 T_NAME		PLdB1
 		TYPE	R32
 		CLASS	ACQU
-		SUBRANGE -25.9681 1000
+		SUBRANGE -25.4422 1000
 		REL	"if(PLW[1]>0)PLdB1=-10*log(PLW[1])/LN10;else PLdB1=1000;"
 		INV_REL	"PLW[1]=0;if(PLdB1<1000)PLW[1]=pow(10.0,(-PLdB1)/10.0)"
 		UNIT	"dB"
@@ -164,8 +175,13 @@ NAME		NUC2
 		NONEDIT
 		TEXT	"nucleus for channel 2"
 END
-NAME		CPDPRG[2]
-		TEXT		"e.g. cw, spinal64 (at PLW12)"
+T_NAME		CPDPRG2
+		TYPE	CHR
+		PP_TYPE	PP_STRING
+		CLASS	ACQU
+		REL	"CPDPRG2=CPDPRG[2]"
+		INV_REL	"CPDPRG[2]=CPDPRG2"
+		TEXT	"file name for cpd2"
 END
 T_NAME		P2
 		TYPE	R32
@@ -174,7 +190,7 @@ T_NAME		P2
 		REL	"P2=P[2]"
 		INV_REL	"P[2]=P2"
 		UNIT	"usec"
-		FORMAT	"%14.3f usec"
+		FORMAT	"%14.4f usec"
 		TEXT	"pulse 2"
 END
 T_NAME		PCPD2
@@ -184,53 +200,33 @@ T_NAME		PCPD2
 		REL	"PCPD2=PCPD[2]"
 		INV_REL	"PCPD[2]=PCPD2"
 		UNIT	"usec"
-		FORMAT	"%14.2f usec"
+		FORMAT	"%14.4f usec"
 		TEXT		"pulse length in decoupling sequence (e.g. 180deg)"
 END
 T_NAME		PLW2
 		TYPE	R32
 		CLASS	ACQU
-		SUBRANGE 0 442.6
+		SUBRANGE 0 509.004
 		REL	"PLW2=PLW[2]"
 		INV_REL	"PLW[2]=PLW2"
 		UNIT	"W"
 		FORMAT	"%14.5g W"
-		TEXT		"90 degree puls 1H"
+		TEXT		"= 1H 90deg power"
 END
 T_NAME		PLdB2
 		TYPE	R32
 		CLASS	ACQU
-		SUBRANGE -26.5601 1000
+		SUBRANGE -27.1672 1000
 		REL	"if(PLW[2]>0)PLdB2=-10*log(PLW[2])/LN10;else PLdB2=1000;"
 		INV_REL	"PLW[2]=0;if(PLdB2<1000)PLW[2]=pow(10.0,(-PLdB2)/10.0)"
 		UNIT	"dB"
 		FORMAT	"%14.2f dB"
 		TEXT	"power PL2 in dB"
 END
-T_NAME		PLW10
-		TYPE	R32
-		CLASS	ACQU
-		SUBRANGE 0 442.6
-		REL	"PLW10=PLW[10]"
-		INV_REL	"PLW[10]=PLW10"
-		UNIT	"W"
-		FORMAT	"%14.5g W"
-		TEXT	"power PLW10 "
-END
-T_NAME		PLdB10
-		TYPE	R32
-		CLASS	ACQU
-		SUBRANGE -26.5601 1000
-		REL	"if(PLW[10]>0)PLdB10=-10*log(PLW[10])/LN10;else PLdB10=1000;"
-		INV_REL	"PLW[10]=0;if(PLdB10<1000)PLW[10]=pow(10.0,(-PLdB10)/10.0)"
-		UNIT	"dB"
-		FORMAT	"%14.2f dB"
-		TEXT	"power PL10 in dB"
-END
 T_NAME		PLW12
 		TYPE	R32
 		CLASS	ACQU
-		SUBRANGE 0 442.6
+		SUBRANGE 0 509.004
 		REL	"PLW12=PLW[12]"
 		INV_REL	"PLW[12]=PLW12"
 		UNIT	"W"
@@ -240,7 +236,7 @@ END
 T_NAME		PLdB12
 		TYPE	R32
 		CLASS	ACQU
-		SUBRANGE -26.5601 1000
+		SUBRANGE -27.1672 1000
 		REL	"if(PLW[12]>0)PLdB12=-10*log(PLW[12])/LN10;else PLdB12=1000;"
 		INV_REL	"PLW[12]=0;if(PLdB12<1000)PLW[12]=pow(10.0,(-PLdB12)/10.0)"
 		UNIT	"dB"
@@ -268,4 +264,24 @@ T_NAME		SPOFFS0
 		UNIT	"Hz"
 		FORMAT	"%14.2f Hz"
 		TEXT	"offset frequency for SP0"
+END
+T_NAME		SPW0
+		TYPE	R32
+		CLASS	ACQU
+		SUBRANGE 0 509.004
+		REL	"SPW0=SPW[0]"
+		INV_REL	"SPW[0]=SPW0"
+		UNIT	"W"
+		FORMAT	"%14.5g W"
+		TEXT		"proton power level during contact"
+END
+T_NAME		SPdB0
+		TYPE	R32
+		CLASS	ACQU
+		SUBRANGE -27.1672 1000
+		REL	"if(SPW[0]>0)SPdB0=-10*log(SPW[0])/LN10;elseSPdB0=1000;"
+		INV_REL	"SPW[0]=0;if(SPdB0<1000)SPW[0]=pow(10.0,(-SPdB0)/10.0)"
+		UNIT	"dB"
+		FORMAT	"%14.2f -dBW"
+		TEXT	"power SPW0 in -dBW"
 END

@@ -1,138 +1,179 @@
 CONFIGURATION INFORMATION
 =========================
 
-Path         : /opt/topspin3.6.2/conf/instr/spect/uxnmr.info
-Date         : Tue Aug 22 11:27:44 2023
-Release      : TopSpin 3.6.2
-Installed in : /opt/topspin3.6.2
-Host         : CZC007DNDL
-OS           : CentOS Linux release 7.9.2009 (Core)
-CPU          : Intel(R) Xeon(R) W-2235 CPU @ 3.80GHz (12 cores at 1200 MHz with Hyperthreading)
-User         : ride (Riza Dervisoglu)
-System       : Avance III 700 NMR spectrometer
-1H-frequency : 700.26 MHz
-Description  : Avance III 700 WB
-Bruker Order : HH008707
-Configured in: CZC007DNDL:/opt/topspin3.6.2/conf/instr/spect
+Path         : /opt/topspin/conf/instr/spect/uxnmr.info
+Date         : Tue Sep  3 13:36:08 2024
+Release      : TopSpin 4.4.0
+Installed in : /opt/topspin
+Host         : BladeEpu
+OS           : CentOS Linux release 7.2.1511 (Core) 
+SPECTR-OS    : Version 4.4.180.20240301
+CPU          : Intel(R) Core(TM) i5-8400H CPU @ 2.50GHz (8 cores at 3719 MHz with Hyperthreading)
+User         : root (root)
+System       : Avance Neo 700 NMR spectrometer
+1H-frequency : 700.30 MHz
+Description  : AvanceNeo-700
+Bruker Order : 5073370
+Configured in: BladeEpu:/opt/topspin/conf/instr/spect
 
-IPSO: connected to spectrometer subnet
-- TCP/IP address = 149.236.99.90
- - IPSO type: 19"
-- Tctrl : 1
-- Fctrls: 3
-- Gctrl1: with digital preemphasis
-- Gctrl2: without digital preemphasis
-- Rctrl : none
-- FREDs : 1
-- DPP : 1
-
-DRU1: AQS DRU-E Z102520/01264 ECL 04.00
-- TCP/IP address = 149.236.99.89
-- Firmware Version = 170619
-- DRU1 controls AQS-Rack and HPPR/2
-
-AQS: connected to 149.236.99.89:/dev/tty10
-  _Slot_ SBSB _____________________Board_____________________
-  Number Addr Type HW-VS FW-VS ID  ECL Name   Description
-  -----------------------------------------------------------
-     2   0x10 0x52   0x4    AW  R  4.4 REC-1  AQS RXAD1000 Z102118/148 ECL 04.04
-     3   0x34 0xc1   0x1        X  2.1 REF-1  REF-1000 Reference Board for AQS Receiver
-     4   0x24 0x29   0x8    AE  S  3.2 SGU-1  AQS SGU/2 1000 Z103082/00445 ECL 03.02 FPGA-Vs=AF
-     5   0x25 0x29   0x8    AE  S  3.6 SGU-2  AQS SGU/2 1000 Z103082/00928 ECL 03.06 FPGA-Vs=AF
-     6   0x26 0x29   0x8    AE  S  3.2 SGU-3  AQS SGU/2 1000 Z103082/00438 ECL 03.02 FPGA-Vs=AF
-    10   0x3c 0xc5     0        Y  1.0 ROUT-1 AQS Router 1/4
-    21   0x21 0xcf     0        P  1.0 PSD-1  PSD/3 Power Supply Distribution Board
-    --   0x20 0xd1     0        B  2.3 MASTER AQS/3 Chassis
-     1   0x20  0x7     0        B      MASTER AQS Rack Master
-  Logical Receiver/SGU configuration:
-
-
-Router: 1 AQS Router 1/4
+AQ-Rack:
+- SCU: AV4I SCU SYSTEM CONTROL UNIT Z162978/02123 ECL 02.01
+- {EPU}: AV4I SCU SYSTEM CONTROL UNIT Z162978/02123 ECL 02.01
+- {GTU}: AV4I SCU SYSTEM CONTROL UNIT Z162978/02123 ECL 02.01
+  Location: slot 7 in rack 1
+  Connection: at IP 192.168.180.18 via PCIe #4
+  Firmware Version: 20210312125813
+  - Gradient resolution: 1.0 us
+  Devices: MTD at /dev/mtd2, RTD at /dev/bbu/rtd4.4, GPROC at /dev/bbu/gproc4.7
+  Sequencer: GCube, TCube
+  - GCube1
+  - TCube1
+- TRX 1200: AV4 TRANSCEIVER 1200 Z148391/10739 ECL 03.02
+  Location: slot 3 in rack 1
+  Connection: at IP 192.168.180.38 via PCIe #9
+  Firmware Version: 20210312121750
+  Devices: MTD at /dev/mtd11, DRX at /dev/bbu/drx9.5, RTD at /dev/bbu/rtd9.4
+  Sequencer: FCube
+  - FCube1
+- TRX 1200: AV4 TRANSCEIVER 1200 Z148391/10736 ECL 03.02
+  Location: slot 4 in rack 1
+  Connection: at IP 192.168.180.46 via PCIe #11
+  Firmware Version: 20210312121750
+  Devices: MTD at /dev/mtd20, DRX at /dev/bbu/drx11.5, RTD at /dev/bbu/rtd11.4
+  Sequencer: FCube
+  - FCube2
+- TRX 1200: AV4 TRANSCEIVER 1200 Z148391/10738 ECL 03.02
+  Location: slot 5 in rack 1
+  Connection: at IP 192.168.180.54 via PCIe #13
+  Firmware Version: 20210312121750
+  Devices: MTD at /dev/mtd29, DRX at /dev/bbu/drx13.5, RTD at /dev/bbu/rtd13.4
+  Sequencer: FCube
+  - FCube3
+- PSM-A: AV4 PSM-A Z149510/04170 ECL 03.02
+- HPPR/2 COVER2: HPPR/2 Cover2N Z178831/00987 ECL 00.00
+  HPPR2: - HPPR/2 preamplifier connected via AqRack
+      Type      : HPPR/2
+      Controller: Cover/2
+                  no LED display for tuning and matching
+      Module  1 : HPLNA 1H19F (reflection meter with CRP-Bias capability)
+                  PN=Z103206, SN=01324 from 20230227
+      Module  2 : 2H
+                  PN=Z003474, SN=00720 from 20230606
+      Module  3 : HPLNA BB31P (reflection meter without CRP-Bias capability)
+                  PN=Z111094, SN=00305 from 20231103
+      Module  4 : HPLNA BB31P (reflection meter without CRP-Bias capability)
+                  PN=Z111094, SN=00302 from 20230729
+  
+- HPLNA 1H19F: HPLNA 1H MODULE 700 Z103206/01324 ECL 06.06
+- 2H: HPPR/2 2H MODULE 700 Z003474/00720 ECL 07.00
+- HPLNA BB31P: HPLNA XBB 31P MODULE 700 Z111094/00305 ECL 05.03
+- HPLNA BB31P: HPLNA XBB 31P MODULE 700 Z111094/00302 ECL 05.03
+- RACK: AV4I AQS CHASSIS Z175600/01362 ECL 04.01
+- FANTRAY: AV4I AQS FAN TRAY Z175900/01386 ECL 00.00
+- PSM-48V: AV4 PSM-48V Z149850/07061 ECL 02.00
+- PSM-D: AV4 PSM-D Z149520/04115 ECL 01.02
+- REF 1200: AV4 REFERENCE 1200 Z148270/03811 ECL 03.00
 
 
 Transmitters at the spectrometer subnet:
 ----------------------------------------
-BLA_W1345097_0101 W1345097/0101 ECL 1:
-- TCP/IP address = 149.236.99.250
-- Firmware VS    = 20120627
-- Amplifier      = BLAXH2H500/100/250 E 700-900MHZ: W1345097/0101 ECL 1
-- Router         = BLMMR32 RF AMPLIFIER MODULE: W1345204/0506 ECL 0
-- Controller     = BLA CONTROL BOARD 6 2V H-USB: W1522050/0336 ECL 3
-BLA_W1345505_0010 W1345505/0010 ECL 1:
-- TCP/IP address = 149.236.99.249
-- Firmware VS    = 20120627
-- Amplifier      = BLAH500 E 700-900MHZ: W1345505/0010 ECL 1
-- Router         = BLMMR31 RF AMPLIFIER MODULE: W1345212/0547 ECL 0
-- Controller     = BLA CONTROL BOARD 6 2V H-USB: W1522050/0416 ECL 3
-BLA_W1345093_0226 W1345093/0226 ECL 1:
-- TCP/IP address = 149.236.99.92
-- Firmware VS    = 20120627
-- Amplifier      = BLAX500 E 6-365MHZ INR: W1345093/0226 ECL 1
-- Router         = BLMMR31 RF AMPLIFIER MODULE: W1345212/0721 ECL 0
-- Controller     = BLA CONTROL BOARD 6 2V H-USB: W1522050/0475 ECL 03
+BLA-W144060-000337 W144060/000337 ECL 41:
+- TCP/IP address = 192.168.99.13
+- Firmware VS    = 20220719
+- Amplifier      = AV4 BLABB1000 15-600: W144060/000337 ECL 41
+- Controller     = BLA CONTROL BOARD 7: W133936/027874 ECL 40
+BLA-W144059-000856 W144059/000856 ECL 12:
+- TCP/IP address = 192.168.99.12
+- Firmware VS    = 20220719
+- Amplifier      = AV4 BLABB500 15-600: W144059/000856 ECL 12
+- Controller     = BLA CONTROL BOARD 7: W133936/028146 ECL 40
+BLA-W144056-000083 W144056/000083 ECL 05:
+- TCP/IP address = 192.168.99.11
+- Firmware VS    = 20220719
+- Amplifier      = AV4 BLAH500 700-900: W144056/000083 ECL 05
+- Controller     = BLA CONTROL BOARD 7: W133936/028274 ECL 40
+LTRX Z109891/00478 ECL 02.02:
+- TCP/IP address = 192.168.99.15
+- Amplifier      = BSMS/2 LOCK TRANSCEIVER 700: Z109891/00478 ECL 02.02
 
-BSMS: BSMS/2 connected to ethernet
-- TCP/IP address = 149.236.99.20
-- ELCB firmware version = 20190521
+BSMS: BSMS/2 functionality available
+- TCP/IP address = 192.168.99.15
+- ELCB firmware version = 20231219
+- ELCB = BSMS/2 ELCB: Z100818/10724 ECL 07.04
+- Backplane = AV4 BSMS CHASSIS: Z152144/02431 ECL 03.01
+- Fan tray = AV4 BSMS FAN TRAY: Z152145/02583 ECL 00.03
+- Power Supply = AV4 BSMS PSM-B POWER SUPPLY: Z150090/02646 ECL 01.01
+- Power Supply 48V 1 = AV4 PSM-48V: Z149850/07042 ECL 02.00
+- Power Supply 48V 2 = AV4 PSM-48V: Z149850/07037 ECL 02.00
+- Variable Power Supply 1 = AV4 VARIABLE POWER SUPPLY BD DC-E: Z140144/00397 ECL 01.02
+- Power Control = AV4 BSMS POWER CONTROL BOARD: Z150089/02715 ECL 01.01
+- SLCB functionality: Available
+- GAB Z-Gradient = GAB3: Z177865/00227 ECL 01.01
 - GAB current limits = 0.0/X, 0.0/Y, 10.0/Z (in A)
-- SCB channels = 40
 - Shim System = BOSS-WB
-- 2HTX Amplifier: not available
-- Lock: installed
+- SCB channels = 40
+- SCB1 = AV4I SCB20 SHIM CURRENT BOARD: Z177674/00293 ECL 01.00
+- SCB2 = AV4I SCB20 SHIM CURRENT BOARD: Z177674/00465 ECL 01.00
+- Shim matrix file: 272623da.dat
+- Active shims: Z Z2 Z3 Z4 Z5 X XZ XZ2 (X2-Y2) XY Y YZ YZ2 (X2-Y2)Z2 XZ4 XZ3 Z6 (X2-Y2)Z YZ4 YZ3 XYZ2 XYZ X3Z X3 Y3Z Y3 (X2-Y2)Z3 XYZ3
+- Magnet polarity: SN (Bruker), uses standard H0 polarity
+- L-TRX = BSMS/2 LOCK TRANSCEIVER 700: Z109891/00478 ECL 02.02
+- Lock: On L-TRX board, supports 2H
+- VTU_SPB = BSMS/2 SPB-E SENSOR & PNEUMATIC BD: Z115192/00976 ECL 05.05
+- VTU_VPSB1 = AV4 VARIABLE POWER SUPPLY BD DC-E: Z140144/00397 ECL 01.02
+- VTC active channel 1 = BSMS/2 VTA TC-2T: Z119237/06535 ECL 01.00
+- VTC active channel 2 = BSMS/2 VTA LN2: Z119238/02492 ECL 01.02
 
-Eurotherm VTU: device connected to 149.236.99.90:/dev/tty01
+VTU: in BSMS/2 connected to ethernet
+- TCP/IP address = 192.168.99.15
 
+- Firmware version = 20231009_1335
 MAS Control Unit: MAS_H139288_1143
-- TCP/IP address   = 149.236.99.169
+- TCP/IP address   = 192.168.98.13
 
-Preamplifiers :
-HPPR2: - HPPR/2 preamplifier connected to 149.236.99.89:/dev/tty10
-    Type      : HPPR/2
-    Controller: Cover/1 with Application firmware = AQ
-                15 LEDs for tuning, 15 LEDs for matching
-    Module  1 : HPLNA 1H19F (reflection meter)
-                PN=Z103206, SN=00465 from 20210614
-    Module  2 : XBB19F 2HS
-                PN=Z003507, SN=00064 from 20031031
-    Module  3 : XBB19F 2HS
-                PN=Z003507, SN=00182 from 20090703
-    Module  4 : 2H
-                PN=Z003474, SN=00122 from 20080414
-    Module  5 : 1H LNA
-                PN=Z003463, SN=00053 from 20080425
+Line Distribution Units at the spectrometer subnet:
+-------------------------------------------------
+Line Distribution Unit 1: PDU1
+- TCP/IP address   = 192.168.99.99
+Line Distribution Unit 2: PDU2
+- TCP/IP address   = 192.168.99.101
 
+Magnet System: BZH007'70'107A07_D375-89-5063 Z103823/01002
+- Magnet  : BZH7'700'107A
+- Cryostat: D375-89-5063
+- Polarity: SN (Bruker)
 
-
-Gradient Controller cable connections
---------------------------------------------------------------------
-GCtrl1: not connected
-GCtrl2: not connected
 
 RF cable connections (detected)
 --------------------------------------------------------------------
-SGU1 NORM output -> input 1 of transmitter 1 (BLAXH2H500/100/250 E 700-900MHZ W1345097/0101 at TCP/IP 149.236.99.250)
-SGU1 AUX  output -> input 2 of transmitter 3 (BLAX500 E 6-365MHZ INR W1345093/0226 at TCP/IP 149.236.99.92)
-SGU2 NORM output -> input 2 of transmitter 1 (BLAXH2H500/100/250 E 700-900MHZ W1345097/0101 at TCP/IP 149.236.99.250)
-SGU2 AUX  output -> input 1 of transmitter 2 (BLAH500 E 700-900MHZ W1345505/0010 at TCP/IP 149.236.99.249)
-SGU3 NORM output -> input 1 of transmitter 3 (BLAX500 E 6-365MHZ INR W1345093/0226 at TCP/IP 149.236.99.92)
-SGU3 AUX  output -> input of AQS Router 1/4
-AQS Router 1/4 output 1 -> input 3 of transmitter 1 (BLAXH2H500/100/250 E 700-900MHZ W1345097/0101 at TCP/IP 149.236.99.250)
-AQS Router 1/4 output 2 -> open
-AQS Router 1/4 output 3 -> open
-AQS Router 1/4 output 4 -> input 4 of transmitter 1 (BLAXH2H500/100/250 E 700-900MHZ W1345097/0101 at TCP/IP 149.236.99.250)
+TRX1 NORM output -> input 1 of transmitter 3 (AV4 BLAH500 700-900 W144056/000083 at TCP/IP 192.168.99.11)
+TRX1 AUX  output -> input 1 of transmitter 4 (BSMS/2 LOCK TRANSCEIVER 700 Z109891/00478 at TCP/IP 192.168.99.15)
+TRX2 NORM output -> input 1 of transmitter 2 (AV4 BLABB500 15-600 W144059/000856 at TCP/IP 192.168.99.12)
+TRX2 AUX  output -> open
+TRX3 NORM output -> input 1 of transmitter 1 (AV4 BLABB1000 15-600 W144060/000337 at TCP/IP 192.168.99.13)
+TRX3 AUX  output -> open
 
 Blanking cable connections (detected)
 --------------------------------------------------------------------
-transmitter 1 = BLAXH2H500/100/250 E 700-900MHZ W1345097/0101 at TCP/IP 149.236.99.250:
-- amplifier 1H-100W uses blanking 2
-- amplifier X-500W uses blanking 1
-- amplifier 2H-250W needs no blanking
+transmitter 1 = AV4 BLABB1000 15-600 W144060/000337 at TCP/IP 192.168.99.13:
+- amplifier B-1000W uses blanking 3
+- amplifier B-100W uses blanking 3
 
-transmitter 2 = BLAH500 E 700-900MHZ W1345505/0010 at TCP/IP 149.236.99.249:
-- amplifier 1H-500W uses blanking 4
-- amplifier 1H-50W uses blanking 4
+transmitter 2 = AV4 BLABB500 15-600 W144059/000856 at TCP/IP 192.168.99.12:
+- amplifier B-500W uses blanking 2
 
-transmitter 3 = BLAX500 E 6-365MHZ INR W1345093/0226 at TCP/IP 149.236.99.92:
-- amplifier X-500W uses blanking 3
+transmitter 3 = AV4 BLAH500 700-900 W144056/000083 at TCP/IP 192.168.99.11:
+- amplifier 1H-500W uses blanking 1
+- amplifier 1H-100W uses blanking 1
 
+transmitter 4 = BSMS/2 LOCK TRANSCEIVER 700 Z109891/00478 at TCP/IP 192.168.99.15:
+- amplifier 2H-5W uses blanking 9
+
+
+Preamplifier connections (detected)
+--------------------------------------------------------------------
+Tune-TRX1 -> HPLNA 1H19F -> REC1
+Tune-TRX1 -> 2H          -> REC1
+Tune-TRX2 -> HPLNA BB31P -> REC2
+Tune-TRX3 -> HPLNA BB31P -> REC3
 
