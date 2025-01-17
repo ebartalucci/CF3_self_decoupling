@@ -1,9 +1,0 @@
-VTC_REG_PID_SET_CH1=\
-<pid_settings type="probehead">
-   <standard_pid proportional="8.606" integral="96.577" differential="16.096" />
-   <temperature selftune="275.000" min="225.000" max="325.000" />
-   <vta type="2" sensor="1" connected_sensors="1" />
-   <gasflow selftune="800.000" min="720.000" max="880.000" />
-   <pics checksum="" name="PH MAS 700WB BL3.2 X/Y/H DVT" />
-   <checksum value="F6036F12" />
-</pid_settings>

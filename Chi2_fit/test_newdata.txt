@@ -1,5 +1,0 @@
-Minimal Chi-square for TLA Spectrum 1:
-T2 Value: 0.010000
-k_ex Value: 619.387755
-Chi-square Value: 4.898958
-
