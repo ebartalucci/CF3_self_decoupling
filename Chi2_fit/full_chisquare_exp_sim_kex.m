@@ -147,7 +147,7 @@ for t_index = 1:length(t_values)
             current_spectrum = spectrum_cf3_tla_s_14khz;
             k_ex_values = linspace(400, 900, 50);
             T_2_values = linspace(0.01, 0.1, 50);
-            offset = 8250/2; % divide by half because we dont know what we r doing, hopefully works
+            offset = 8250/2;
             title('S-TFLA 14 kHz')
         case 2
             current_spectrum = spectrum_cf3_tla_s_17p5khz;

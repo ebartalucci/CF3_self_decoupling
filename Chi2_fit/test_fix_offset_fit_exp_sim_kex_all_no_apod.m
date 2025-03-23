@@ -175,23 +175,24 @@ plot(xax1,datapx1)
 p0 = [-250 400 2 0];
 p =zeros(6,4);
 
+std_errors =zeros(14,1);
+
+jacobian = zeros(length(datapx1), 4);
+
+datasx1=zeros(size(datapx1));
+
 options=optimset('MaxFunEvals',10000);
 options=optimset(options,'MaxIter',10000);
+
 for k=1:14
   if k>8
     p0(1)=0;
   end
-  [p(k,:) resnorm] = lsqcurvefit(@fit_fun, p0, time,datapx1(k,:),[-10000 0 0 -10000],[10000 10000 0.1 10000],options);
-  [p(k,:) resnorm] = lsqcurvefit(@fit_fun, p(k,:), time,datapx1(k,:),[-10000 0 0 -10000],[10000 10000 0.1 10000],options);
-end
+  [p(k,:) resnorm, residuals, exitflag, output, lambda, jacobian] = lsqcurvefit(@fit_fun, p0, time,datapx1(k,:),[-10000 0 0 -10000],[10000 10000 0.1 10000],options);
+  [p(k,:) resnorm, residuals, exitflag, output, lambda, jacobian] = lsqcurvefit(@fit_fun, p(k,:), time,datapx1(k,:),[-10000 0 0 -10000],[10000 10000 0.1 10000],options);
 
-datasx1=zeros(size(datapx1));
-
-for k=1:14
   datasx1(k,:) = fit_fun(p(k,:),time);
-end
 
-for k=1:14
     subplot(7,2,k)
     switch k
         case 1
@@ -229,9 +230,19 @@ for k=1:14
     line = sprintf('k_{ex} = %5.1f s^{-1}',p(k,2));
     line2 = sprintf('T_2 = %5.1f s',p(k,3));
 
+    % Error calculation for significant figures of fitted k_ex
+    sigma_sq = resnorm / (length(residuals) - length(p(k,:)));
+    
+    covariance_mat = full(inv(full(jacobian(:,2)' * jacobian(:,2)))) * sigma_sq;
+
+    std_errors(k) = sqrt(diag(covariance_mat));
+
+    line3 = sprintf('Parameter: %.2f +- %.2f \n',p(k,2), std_errors(k));
+
     % Write the results to the text file
-    fprintf(fileID, 'Spectrum: %f\n', k);
-    fprintf(fileID, 'k_{ex} = %5.1f s^{-1}',p(k,2));
+    fprintf(fileID, 'Spectrum: %f \n', k);
+    fprintf(fileID, 'k_{ex} = %5.1f s^{-1} \n',p(k,2));
+    fprintf(fileID, 'Error = %5.2f \n',std_errors(k));
 
     text(1,0.6,line)
     axis([-2 2 -0.1 1.2])
@@ -272,5 +283,14 @@ end
 % Close the text file
 fclose(fileID);
 
-print -dpdf -fillpage output/centered_stacked_figure_all_fits_no_apod.pdf
+%print -dpdf -fillpage output/centered_stacked_figure_all_fits_no_apod.pdf
+
+
+
+
+
+
+
+
+
 
